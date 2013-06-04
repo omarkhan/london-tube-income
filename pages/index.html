@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Household income by tube station</h1>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  window.DATA = {% include "data.json" %};
+</script>
+<script src="{{ STATIC_URL }}/js/main.js"></script>
+{% endblock %}
