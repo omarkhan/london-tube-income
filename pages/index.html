@@ -2,9 +2,11 @@
 
 {% block content %}
 <h1>Household income by tube station</h1>
+<svg id="graph"></svg>
 {% endblock %}
 
 {% block scripts %}
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <script>
   window.DATA = {% include "data.json" %};
 </script>

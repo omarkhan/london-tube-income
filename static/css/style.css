@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'london_tubenormal';
+  src: url('../font/london-tube-webfont.woff');
+}
+
 body {
-	font: 14px/1.35em Arial, Helvetica, sans-serif;
+  font-family: 'london_tubenormal';
 }
