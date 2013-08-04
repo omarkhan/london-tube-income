@@ -49,9 +49,10 @@ g.selectAll('y-tick')
 
 path = g.append('path')
 render = (stations) ->
-  x.domain([0, stations.length])
+  x.domain([0, stations.length - 1])
 
-  g.selectAll('x-tick')
+  g.selectAll('.x-tick').remove()
+  g.selectAll('.x-tick')
     .data(stations)
     .enter()
     .append('line')
@@ -61,6 +62,7 @@ render = (stations) ->
     .attr('x2', (d, i) -> x(i))
     .attr('y2', -y(0) + 4)
 
+  g.selectAll('.x-label').remove()
   g.selectAll('.x-label')
     .data(stations)
     .enter()
