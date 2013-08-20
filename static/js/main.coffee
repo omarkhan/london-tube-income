@@ -1,9 +1,10 @@
-range = 1500
+range = 1600
 w = 960
 h = 400
 margin = 45
+spacing = 35
 
-x = d3.scale.linear().range([0 + margin, w - margin])
+x = (val) -> margin + val * spacing
 y = d3.scale.linear().domain([0, range]).range([0 + margin, h - margin])
 
 graph = d3.select('#graph')
@@ -49,7 +50,8 @@ g.selectAll('y-tick')
 
 path = g.append('path')
 render = (stations) ->
-  x.domain([0, stations.length - 1])
+  width = x(stations.length - 1) + margin
+  graph.style('width', "#{width}px")
 
   g.selectAll('.x-tick').remove()
   g.selectAll('.x-tick')
