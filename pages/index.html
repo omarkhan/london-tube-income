@@ -3,13 +3,12 @@
 {% block content %}
 <h1>Household income by tube station</h1>
 <div id="lines"></div>
-<div id="graph-container">
-  <svg id="graph"></svg>
-</div>
+{% include "map.svg" %}
 {% endblock %}
 
 {% block scripts %}
-<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<!--<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>-->
+<script src="{{ STATIC_URL }}/js/d3.js"></script>
 <script>
   window.DATA = {% include "data.json" %};
 </script>
