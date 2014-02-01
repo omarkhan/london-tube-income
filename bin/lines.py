@@ -34,8 +34,8 @@ def final_json(lines_path, inpath=None, outpath=None):
             branches = []
             for path in line['paths']:
                 ln = [stations[s] for s in build_line(line['graph'], path['path'])]
-                branches.append((path['name'], ln))
-            data.append((line['name'], branches))
+                branches.append({'name': path['name'], 'stations': ln})
+            data.append({'name': line['name'], 'id': line['id'], 'branches': branches})
         json.dump({'lines': data}, outfile, indent=2)
     finally:
         infile.close()
