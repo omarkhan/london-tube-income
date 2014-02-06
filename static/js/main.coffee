@@ -1,21 +1,24 @@
-range = 1600
+# Max income to display on the graph
+range = 1700
+
+# Drawing surface width and height
 w = 2673.8766
 h = 1885.32
+
+# Graph margins
 margin = 110
 
+# Plotting functions
 x = d3.scale.linear().range([0 + margin, w - margin])
 y = d3.scale.linear().domain([0, range]).range([0 + margin, h - margin])
 
-map = d3.select('#map')
-mapContent = d3.select('#map-content')
-g = map.append('g')
-  .attr('class', 'graph')
-
+# Line generator for income data
 line = d3.svg.line()
   .x((d, i) -> x(i))
   .y((d) -> h - y(d.income))
   .interpolate('cardinal')
 
+# Path tween function from http://bl.ocks.org/mbostock/3916621
 pathTween = (path, precision) ->
   return ->
     path0 = this
@@ -39,6 +42,13 @@ pathTween = (path, precision) ->
         return 'M' + points.map((p) -> p(t)).join('L')
       return path
 
+# Select the svg and add a g for the graph
+map = d3.select('#map')
+mapContent = d3.select('#map-content')
+g = map.append('g')
+  .attr('class', 'graph')
+
+# Add graph axes
 g.append('line')
   .attr('x1', x(0))
   .attr('y1', h - y(0))
@@ -71,9 +81,11 @@ g.selectAll('y-tick')
   .attr('x2', x(0) - 12)
   .attr('y2', (d) -> h - y(d))
 
+# Display the graph for the given line id and income data
 render = (lineId, stations) ->
   x.domain([0, stations.length - 1])
 
+  # Add x ticks for each station
   g.selectAll('.x-tick').remove()
   g.selectAll('.x-tick')
     .data(stations)
@@ -85,6 +97,7 @@ render = (lineId, stations) ->
     .attr('x2', (d, i) -> x(i))
     .attr('y2', h - y(0) + 12)
 
+  # Add x axis labels for each station
   g.selectAll('.x-label').remove()
   g.selectAll('.x-label')
     .data(stations)
@@ -96,6 +109,7 @@ render = (lineId, stations) ->
     .attr('y', h - y(0) + 30)
     .attr('transform', (d, i) -> "rotate(-80, #{x(i) + 12}, #{h - y(0) + 30})")
 
+  # Transition the line on the map to the graph using pathTween
   mapContent.classed('fade', true)
   original = map.select("##{lineId} path.main")
   path = g.append('path').attr({
