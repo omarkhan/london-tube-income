@@ -27,6 +27,11 @@ body {
   display: block;
 }
 
+#map .lines path, #map .lines line {
+  fill: none;
+  stroke-width: 6.65;
+}
+
 .fade {
   opacity: 0.1;
   transition: opacity 2s;
