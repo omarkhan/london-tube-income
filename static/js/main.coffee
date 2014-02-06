@@ -16,13 +16,6 @@ line = d3.svg.line()
   .y((d) -> h - y(d.income))
   .interpolate('cardinal')
 
-medLine = (stations) ->
-  incomes = stations.map (s) -> parseInt(s.income, 10)
-  min = Math.min(incomes...)
-  max = Math.max(incomes...)
-  med = min + ((max - min) / 2)
-  return "M#{x(0)},#{h - y(med)}L#{x(stations.length - 1)},#{h - y(med)}"
-
 pathTween = (path, precision) ->
   return ->
     path0 = this
@@ -110,9 +103,7 @@ render = (lineId, stations) ->
     style: original.attr('style')
   })
   path.transition()
-    .duration(2000)
-    .attrTween('d', pathTween(medLine(stations), 100))
-    .transition()
+    .duration(1000)
     .attrTween('d', pathTween(line(stations), 100))
 
 lines = d3.select('#lines')
