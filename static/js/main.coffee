@@ -104,7 +104,7 @@ render = (lineId, stations) ->
     .attr('transform', (d, i) -> "rotate(-80, #{x(i) + 12}, #{h - y(0) + 30})")
 
   mapContent.classed('fade', true)
-  original = map.select("##{lineId}")
+  original = map.select("##{lineId} path.main")
   path = g.append('path').attr({
     d: original.attr('d')
     style: original.attr('style')
