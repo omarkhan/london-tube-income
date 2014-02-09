@@ -3,6 +3,7 @@
 {% block content %}
 <h1>Household income by tube station</h1>
 <div id="lines">
+  {% spaceless %}
   {% for line in data.lines %}
   <div class="line">
     <div class="line-name">{{ line.name }}</div>
@@ -13,6 +14,7 @@
     </ul>
   </div>
   {% endfor %}
+  {% endspaceless %}
 </div>
 {% include "map.svg" %}
 {% endblock %}
