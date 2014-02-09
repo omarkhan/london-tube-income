@@ -120,29 +120,20 @@ render = (lineId, stations) ->
     .duration(1000)
     .attrTween('d', pathTween(line(stations), 10))
 
+# Bind events
 lines = d3.select('#lines')
 lines.selectAll('.line')
   .data(DATA.lines)
-  .enter()
-  .append('div')
-  .attr('class', 'line')
   .each ({name, id, branches}) ->
     d3.select(this)
-      .text(name)
       .on('click', ->
         branches = d3.select(this).select('.branches')
         hidden = branches.style('display') == 'none'
         d3.selectAll('.branches').style('display', 'none')
         if hidden
           branches.style('display', 'block'))
-      .append('ul')
-      .attr('class', 'branches')
       .selectAll('.branch')
       .data(branches)
-      .enter()
-      .append('li')
-      .attr('class', 'branch')
-      .text((b) -> b.name)
       .on('click', ({stations}) ->
         d3.event.stopPropagation()
         render(id, stations))

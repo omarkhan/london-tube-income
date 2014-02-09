@@ -2,7 +2,18 @@
 
 {% block content %}
 <h1>Household income by tube station</h1>
-<div id="lines"></div>
+<div id="lines">
+  {% for line in data.lines %}
+  <div class="line">
+    <div class="line-name">{{ line.name }}</div>
+    <ul class="branches">
+      {% for branch in line.branches %}
+      <li class="branch">{{ branch.name }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endfor %}
+</div>
 {% include "map.svg" %}
 {% endblock %}
 
