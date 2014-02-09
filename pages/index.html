@@ -5,8 +5,8 @@
 <div id="lines">
   {% spaceless %}
   {% for line in data.lines %}
-  <div class="line">
-    <div class="line-name">{{ line.name }}</div>
+  <div class="{{ line.id }} line">
+    <div class="line-colour"></div><div class="line-name">{{ line.name }}</div>
     <ul class="branches">
       {% for branch in line.branches %}
       <li class="branch">{{ branch.name }}</li>

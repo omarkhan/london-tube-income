@@ -5,6 +5,7 @@
 
 body {
   font-family: tube;
+  font-size: 15px;
 }
 
 #content {
@@ -17,6 +18,63 @@ body {
   width: 25%;
   cursor: pointer;
   vertical-align: top;
+}
+
+#lines .line-colour {
+  display: inline-block;
+  vertical-align: 1px;
+  height: 9px;
+  width: 70px;
+  margin-right: 10px;
+}
+
+#lines .line-name {
+  display: inline-block;
+  color: #1c2bb7;
+}
+
+#lines .bakerloo.line .line-colour {
+  background-color: #b06010;
+}
+
+#lines .central.line .line-colour {
+  background-color: #ee3224;
+}
+
+#lines .circle.line .line-colour {
+  background-color: #ffd200;
+}
+
+#lines .district.line .line-colour {
+  background-color: #00853f;
+}
+
+#lines .hammersmith.line .line-colour {
+  background-color: #f386a1;
+}
+
+#lines .jubilee.line .line-colour {
+  background-color: #939ba1;
+}
+
+#lines .metropolitan.line .line-colour {
+  background-color: #97005e;
+}
+
+#lines .northern.line .line-colour {
+  background-color: #000000;
+}
+
+#lines .piccadilly.line .line-colour {
+  background-color: #1c3f94;
+}
+
+#lines .victoria.line .line-colour {
+  background-color: #009ddc;
+}
+
+#lines .waterloo.line .line-colour {
+  background-color: #86cebc;
 }
 
 #lines .branches {
