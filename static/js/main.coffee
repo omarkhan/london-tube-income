@@ -83,6 +83,15 @@ g.selectAll('y-tick')
 
 # Display the graph for the given line id and income data
 render = (lineId, stations) ->
+  # Fade out and remove the existing graph, if any
+  g.select('path')
+    .transition()
+    .duration(500)
+    .style('opacity', 0)
+    .transition()
+    .remove()
+
+  # Set the x domain to the number of stations
   x.domain([0, stations.length - 1])
 
   # Add x ticks for each station
