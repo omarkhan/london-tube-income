@@ -108,7 +108,7 @@
           ]
         }
       ],
-      "name": "Bakerloo Line",
+      "name": "Bakerloo",
       "id": "bakerloo"
     },
     {
@@ -565,7 +565,7 @@
           ]
         }
       ],
-      "name": "Central Line",
+      "name": "Central",
       "id": "central"
     },
     {
@@ -716,7 +716,7 @@
           ]
         }
       ],
-      "name": "Circle Line",
+      "name": "Circle",
       "id": "circle"
     },
     {
@@ -1023,7 +1023,7 @@
           ]
         }
       ],
-      "name": "District Line",
+      "name": "District",
       "id": "district"
     },
     {
@@ -1150,7 +1150,7 @@
           ]
         }
       ],
-      "name": "Hammersmith & City Line",
+      "name": "Hammersmith & City",
       "id": "hammersmith"
     },
     {
@@ -1269,7 +1269,7 @@
           ]
         }
       ],
-      "name": "Jubilee Line",
+      "name": "Jubilee",
       "id": "jubilee"
     },
     {
@@ -1651,7 +1651,7 @@
           ]
         }
       ],
-      "name": "Metropolitan Line",
+      "name": "Metropolitan",
       "id": "metropolitan"
     },
     {
@@ -2181,7 +2181,7 @@
           ]
         }
       ],
-      "name": "Northern Line",
+      "name": "Northern",
       "id": "northern"
     },
     {
@@ -2521,7 +2521,7 @@
           ]
         }
       ],
-      "name": "Piccadilly Line",
+      "name": "Piccadilly",
       "id": "piccadilly"
     },
     {
@@ -2596,7 +2596,7 @@
           ]
         }
       ],
-      "name": "Victoria Line",
+      "name": "Victoria",
       "id": "victoria"
     },
     {
@@ -2615,7 +2615,7 @@
           ]
         }
       ],
-      "name": "Waterloo & City Line",
+      "name": "Waterloo & City",
       "id": "waterloo"
     }
   ]
