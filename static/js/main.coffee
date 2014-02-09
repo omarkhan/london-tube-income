@@ -18,6 +18,9 @@ line = d3.svg.line()
   .y((d) -> h - y(d.income))
   .interpolate('cardinal')
 
+tweenLine = d3.svg.line()
+  .interpolate('cardinal')
+
 # Path tween function from http://bl.ocks.org/mbostock/3916621
 pathTween = (path, precision) ->
   return ->
@@ -39,7 +42,7 @@ pathTween = (path, precision) ->
 
     return (t) ->
       if t < 1
-        return 'M' + points.map((p) -> p(t)).join('L')
+        return tweenLine(points.map((p) -> p(t)))
       return path
 
 # Select the svg and add a g for the graph
