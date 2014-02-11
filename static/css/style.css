@@ -132,6 +132,12 @@ body {
   stroke-width: 5;
 }
 
+.graph circle {
+  fill: white;
+  stroke: black;
+  stroke-width: 7;
+}
+
 .graph .x-label {
   text-anchor: end;
   font-size: 40px;

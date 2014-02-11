@@ -11,11 +11,13 @@ margin = 110
 # Plotting functions
 x = d3.scale.linear().range([0 + margin, w - margin])
 y = d3.scale.linear().domain([0, range]).range([0 + margin, h - margin])
+getx = (d, i) -> x(i)
+gety = (d) -> h - y(d.income)
 
 # Line generator for income data
 line = d3.svg.line()
-  .x((d, i) -> x(i))
-  .y((d) -> h - y(d.income))
+  .x(getx)
+  .y(gety)
   .interpolate('cardinal')
 
 # Path tween function from http://bl.ocks.org/mbostock/3916621
@@ -83,8 +85,9 @@ g.selectAll('y-tick')
 
 # Display the graph for the given line id and income data
 render = (lineId, stations) ->
+
   # Fade out and remove the existing graph, if any
-  g.select('path')
+  g.selectAll('path, circle')
     .transition()
     .duration(500)
     .style('opacity', 0)
@@ -128,6 +131,16 @@ render = (lineId, stations) ->
   path.transition()
     .duration(1000)
     .attrTween('d', pathTween(line(stations), 10))
+
+    # Add circles for each station
+    .each('end', ->
+      g.selectAll('circle')
+        .data(stations)
+        .enter()
+        .append('circle')
+        .attr('r', 14)
+        .attr('cx', getx)
+        .attr('cy', gety))
 
 # Setup UI
 lines = d3.select('#lines')
