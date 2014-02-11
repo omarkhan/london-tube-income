@@ -23,7 +23,7 @@ getElementCentre = (el) ->
   }
 
 # Line generator for income data
-line = d3.svg.line()
+generateLine = d3.svg.line()
   .x(getx)
   .y(gety)
   .interpolate('cardinal')
@@ -142,7 +142,7 @@ render = (lineId, stations) ->
   })
   path.transition()
     .duration(1000)
-    .attrTween('d', pathTween(line(stations), 10))
+    .attrTween('d', pathTween(generateLine(stations), 10))
 
     # Add circles for each station
     .each 'end', ->
@@ -173,18 +173,22 @@ lines = d3.select('#lines')
 lines.selectAll('.line')
   .data(DATA.lines)
   .each ({name, id, branches}) ->
-    thisLine = d3.select(this)
+    line = d3.select(this)
 
     # When the user clicks on a line, display the list of branches for that line
-    thisLine.on 'click', ->
-      if thisLine.classed('selected')
-        thisLine.classed('selected', false)
+    line.on 'click', ->
+      if line.classed('selected')
+        line.classed('selected', false)
       else
         lines.select('.line.selected').classed('selected', false)
-        thisLine.classed('selected', true)
+        line.classed('selected', true)
+
+        # Select the first branch
+        first = line.select('.branch')
+        first.on('click').call(first.node(), branches[0])
 
     # WHen the user clicks on a branch, render it
-    thisLine.selectAll('.branch')
+    line.selectAll('.branch')
       .data(branches)
       .on 'click', ({stations}) ->
         d3.event.stopPropagation()
