@@ -154,6 +154,7 @@ render = (lineId, stations) ->
         .data(stations)
         .enter()
         .append('circle')
+        .style('opacity', 0)
         .attr('r', 14)
         .attr('cx', getx)
         .attr('cy', gety)
@@ -171,6 +172,11 @@ render = (lineId, stations) ->
             top: "#{position.top}px"
           })
           tooltip.style('visibility', 'visible')
+
+        # Fade the circles in
+        .transition()
+        .duration(500)
+        .style('opacity', 1)
 
 # Setup UI
 lines = d3.select('#lines')
