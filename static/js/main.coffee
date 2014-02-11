@@ -133,14 +133,14 @@ render = (lineId, stations) ->
     .attrTween('d', pathTween(line(stations), 10))
 
     # Add circles for each station
-    .each('end', ->
+    .each 'end', ->
       g.selectAll('circle')
         .data(stations)
         .enter()
         .append('circle')
         .attr('r', 14)
         .attr('cx', getx)
-        .attr('cy', gety))
+        .attr('cy', gety)
 
 # Setup UI
 lines = d3.select('#lines')
@@ -150,18 +150,18 @@ lines.selectAll('.line')
     thisLine = d3.select(this)
 
     # When the user clicks on a line, display the list of branches for that line
-    thisLine.on('click', ->
+    thisLine.on 'click', ->
       if thisLine.classed('selected')
         thisLine.classed('selected', false)
       else
         lines.select('.line.selected').classed('selected', false)
-        thisLine.classed('selected', true))
+        thisLine.classed('selected', true)
 
     # WHen the user clicks on a branch, render it
     thisLine.selectAll('.branch')
       .data(branches)
-      .on('click', ({stations}) ->
+      .on 'click', ({stations}) ->
         d3.event.stopPropagation()
         lines.selectAll('.branch.selected').classed('selected', false)
         this.classList.add('selected')
-        render(id, stations))
+        render(id, stations)
