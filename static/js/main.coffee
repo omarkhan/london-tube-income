@@ -92,10 +92,8 @@ g.selectAll('y-tick')
   .attr('x2', x(0) - 12)
   .attr('y2', (d) -> h - y(d))
 
-# Display the graph for the given line id and income data
-render = (lineId, stations) ->
-
-  # Fade out and remove the existing graph, if any
+# Fade out and remove the existing graph, if any
+removeGraph = ->
   g.selectAll('path, circle')
     .transition()
     .duration(500)
@@ -105,6 +103,12 @@ render = (lineId, stations) ->
 
   # Hide the tooltip
   tooltip.style('visibility', null)
+
+# Display the graph for the given line id and income data
+render = (lineId, stations) ->
+
+  # Remove the existing graph
+  removeGraph()
 
   # Set the x domain to the number of stations
   x.domain([0, stations.length - 1])
@@ -179,6 +183,8 @@ lines.selectAll('.line')
     line.on 'click', ->
       if line.classed('selected')
         line.classed('selected', false)
+        removeGraph()
+        mapContent.classed('fade', false)
       else
         lines.select('.line.selected').classed('selected', false)
         line.classed('selected', true)
