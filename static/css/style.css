@@ -16,11 +16,12 @@ body {
 #lines .line {
   display: inline-block;
   width: 25%;
+  margin: 3px 0;
   cursor: pointer;
   vertical-align: top;
 }
 
-#lines .line-colour {
+#lines .line .line-colour {
   display: inline-block;
   vertical-align: 1px;
   height: 9px;
@@ -28,9 +29,43 @@ body {
   margin-right: 10px;
 }
 
-#lines .line-name {
+#lines .line .line-name {
   display: inline-block;
   color: #1c2bb7;
+}
+
+#lines .line .branches {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.4s, visibility 0.4s;
+  list-style: none;
+  margin: 0;
+  padding: 4px;
+  background-color: white;
+  border: 1px solid #ccc;
+  font-size: 0.9em;
+}
+
+#lines .line.selected .branches {
+  opacity: 1;
+  visibility: visible;
+}
+
+#lines .branches .branch {
+  border: 1px solid white;
+  padding: 2px;
+  margin: 3px;
+  transition: background-color 0.4s, border-color 0.4s;
+}
+
+#lines .branches .branch:hover {
+  border-color: #828ad7;
+}
+
+#lines .branches .branch.selected {
+  background-color: #dbddf2;
+  border-color: #828ad7;
 }
 
 #lines .bakerloo.line .line-colour {
@@ -75,10 +110,6 @@ body {
 
 #lines .waterloo.line .line-colour {
   background-color: #86cebc;
-}
-
-#lines .branches {
-  display: none;
 }
 
 #map {

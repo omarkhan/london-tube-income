@@ -129,20 +129,26 @@ render = (lineId, stations) ->
     .duration(1000)
     .attrTween('d', pathTween(line(stations), 10))
 
-# Bind events
+# Setup UI
 lines = d3.select('#lines')
 lines.selectAll('.line')
   .data(DATA.lines)
   .each ({name, id, branches}) ->
-    d3.select(this)
-      .on('click', ->
-        branches = d3.select(this).select('.branches')
-        hidden = branches.style('display') == 'none'
-        d3.selectAll('.branches').style('display', 'none')
-        if hidden
-          branches.style('display', 'block'))
-      .selectAll('.branch')
+    thisLine = d3.select(this)
+
+    # When the user clicks on a line, display the list of branches for that line
+    thisLine.on('click', ->
+      if thisLine.classed('selected')
+        thisLine.classed('selected', false)
+      else
+        lines.select('.line.selected').classed('selected', false)
+        thisLine.classed('selected', true))
+
+    # WHen the user clicks on a branch, render it
+    thisLine.selectAll('.branch')
       .data(branches)
       .on('click', ({stations}) ->
         d3.event.stopPropagation()
+        lines.selectAll('.branch.selected').classed('selected', false)
+        this.classList.add('selected')
         render(id, stations))
