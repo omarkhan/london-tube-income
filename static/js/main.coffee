@@ -190,8 +190,8 @@ lines.selectAll('.line')
         line.classed('selected', true)
 
         # Select the first branch
-        first = line.select('.branch')
-        first.on('click').call(first.node(), branches[0])
+        branch = line.selectAll('.branch')
+        branch.on('click').call(branch.node(), branches[0])
 
     # WHen the user clicks on a branch, render it
     line.selectAll('.branch')
