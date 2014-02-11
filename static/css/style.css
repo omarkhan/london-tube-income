@@ -24,24 +24,38 @@ a:hover {
   text-decoration: underline;
 }
 
+h1, h2 {
+  font-family: tube;
+}
+
 p {
   margin: 2em 0;
 }
 
-header {
-  font-family: tube;
+header, footer {
   background-color: #262f7e;
   color: white;
-  padding: 14px 0;
-  margin-bottom: 20px;
+  padding: 1.5em 0;
 }
 
-header h1, main {
+header {
+  margin-bottom: 2em;
+}
+
+footer {
+  margin-top: 2em;
+}
+
+footer a {
+  color: #cfd2f2;
+}
+
+header > h1, main, #footer-content {
   width: 960px;
   margin: 0 auto;
 }
 
-#text {
+#text, #methodology {
   width: 640px;
 }
 
