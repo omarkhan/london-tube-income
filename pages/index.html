@@ -1,7 +1,10 @@
 {% extends "base.html" %}
 
-{% block content %}
+{% block header %}
 <h1>Household income by tube station</h1>
+{% endblock %}
+
+{% block main %}
 <div id="lines">
   {% spaceless %}
   {% for line in data.lines %}

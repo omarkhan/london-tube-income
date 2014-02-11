@@ -6,9 +6,17 @@
 body {
   font-family: tube;
   font-size: 15px;
+  margin: 0;
 }
 
-#content {
+header {
+  background-color: #262f7e;
+  color: white;
+  padding: 14px 0;
+  margin-bottom: 20px;
+}
+
+header h1, main {
   width: 960px;
   margin: 0 auto;
 }

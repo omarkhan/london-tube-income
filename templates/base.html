@@ -8,14 +8,17 @@
   <link rel="shortcut icon" href="{{ STATIC_URL }}/favicon.ico"> 
   <link rel="stylesheet" href="{{ STATIC_URL }}/css/style.css">
 
-  {% block header %}
+  {% block title %}
   <title>Household income by tube station</title>
   {% endblock %}
 </head>
 <body>
-  <div id="content">
-    {% block content %}{% endblock %}
-  </div>
+  <header>
+    {% block header %}{% endblock %}
+  </header>
+  <main>
+    {% block main %}{% endblock %}
+  </main>
   {% block scripts %}{% endblock %}
 </body>
 </html>
