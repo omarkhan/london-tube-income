@@ -147,3 +147,16 @@ body {
   text-anchor: end;
   font-size: 40px;
 }
+
+#tooltip {
+  visibility: none;
+  position: absolute;
+  padding: 4px;
+  background-color: white;
+  border: 1px solid #ccc;
+  font-size: 0.9em;
+}
+
+#tooltip .station-income-amount {
+  font-weight: bold;
+}

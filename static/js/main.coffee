@@ -14,6 +14,14 @@ y = d3.scale.linear().domain([0, range]).range([0 + margin, h - margin])
 getx = (d, i) -> x(i)
 gety = (d) -> h - y(d.income)
 
+# Helper function to get the coordinates of the centre of an element
+getElementCentre = (el) ->
+  rect = el.getBoundingClientRect()
+  return {
+    left: document.body.scrollLeft + rect.left + (rect.width / 2)
+    top: document.body.scrollTop + rect.top + (rect.height / 2)
+  }
+
 # Line generator for income data
 line = d3.svg.line()
   .x(getx)
@@ -31,7 +39,7 @@ pathTween = (path, precision) ->
 
     # Uniform sampling of distance based on specified precision
     dt = precision / Math.max(len0, len1)
-    distances = (i for i in [dt..1] by dt)
+    distances = (i for i in [0..1] by dt)
 
     # Compute point-interpolators at each distance
     points = distances.map (t) ->
@@ -49,6 +57,7 @@ map = d3.select('#map')
 mapContent = d3.select('#map-content')
 g = map.append('g')
   .attr('class', 'graph')
+tooltip = d3.select('#tooltip')
 
 # Add graph axes
 g.append('line')
@@ -141,6 +150,20 @@ render = (lineId, stations) ->
         .attr('r', 14)
         .attr('cx', getx)
         .attr('cy', gety)
+
+        # Display tooltip on mouseenter
+        .on 'mouseenter', (d) ->
+          tooltip.select('.station-name').text(d.name)
+          tooltip.select('.station-income-amount').text(d.income)
+          rect = tooltip.node().getBoundingClientRect()
+          position = getElementCentre(this)
+          position.left -= rect.width / 2
+          position.top -= rect.height + 30
+          tooltip.style({
+            left: "#{position.left}px"
+            top: "#{position.top}px"
+          })
+          tooltip.style('visibility', 'visible')
 
 # Setup UI
 lines = d3.select('#lines')
