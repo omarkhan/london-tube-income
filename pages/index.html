@@ -5,25 +5,47 @@
 {% endblock %}
 
 {% block main %}
-<div id="lines">
-  {% spaceless %}
-  {% for line in data.lines %}
-  <div class="{{ line.id }} line">
-    <div class="line-colour"></div><div class="line-name">{{ line.name }}</div>
-    <ul class="branches">
-      {% for branch in line.branches %}
-      <li class="branch">{{ branch.name }}</li>
-      {% endfor %}
-    </ul>
+<section id="text">
+  <p><a href="http://www.newyorker.com/sandbox/business/subway.html">This
+    feature in the New Yorker</a> shows median household income across the
+    city's subway network. It shows some serious inequality: line 2 rises from
+    the lowest depths of $13,750 at East 180 St. in the Bronx to the staggering
+    heights of $205,192 at Park Place in downtown Manhattan.</p>
+
+  <p><a href="http://dangrover.com/">Dan Grover</a> put together <a
+    href="http://dangrover.github.io/sf-transit-inequality/">a similar
+    visualization for the San Francisco bay area</a>. Turns out the bay area is
+    pretty unequal too: in a single CalTrain stop, median annual income plummets
+    from $193,125 at Atherton to just $30,080 at Redwood City.</p>
+
+  <p>I was curious what this kind of visualization would look like for my city,
+    London. The surprising result: while there is considerable inequality, it
+    doesn't come close to the factor-of-10 gap you can find in NY and SF. I
+    suspect part of it has to do with differences in the datasets - indeed the
+    figures I'm using here are model-based estimates.</p>
+</section>
+
+<section id="visualization">
+  <div id="lines">
+    {% spaceless %}
+    {% for line in data.lines %}
+    <div class="{{ line.id }} line">
+      <div class="line-colour"></div><div class="line-name">{{ line.name }}</div>
+      <ul class="branches">
+        {% for branch in line.branches %}
+        <li class="branch">{{ branch.name }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endfor %}
+    {% endspaceless %}
   </div>
-  {% endfor %}
-  {% endspaceless %}
-</div>
-{% include "map.svg" %}
-<div id="tooltip">
-  <div class="station-name"></div>
-  <div class="station-income">£<span class="station-income-amount"></span> / week</div>
-</div>
+  {% include "map.svg" %}
+  <div id="tooltip">
+    <div class="station-name"></div>
+    <div class="station-income">£<span class="station-income-amount"></span> / week</div>
+  </div>
+</section>
 {% endblock %}
 
 {% block scripts %}

@@ -3,13 +3,33 @@
   src: url('../font/london-tube-webfont.woff');
 }
 
+@font-face {
+  font-family: 'Open Sans';
+  src: local('Open Sans'), local('OpenSans'), url('../font/opensans.woff');
+}
+
 body {
-  font-family: tube;
-  font-size: 15px;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  color: #444;
   margin: 0;
 }
 
+a {
+  color: #1c2bb7;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+p {
+  margin: 2em 0;
+}
+
 header {
+  font-family: tube;
   background-color: #262f7e;
   color: white;
   padding: 14px 0;
@@ -21,12 +41,21 @@ header h1, main {
   margin: 0 auto;
 }
 
+#text {
+  width: 640px;
+}
+
+#visualization {
+  font-family: tube;
+}
+
 #lines .line {
   display: inline-block;
   width: 25%;
   margin: 3px 0;
   cursor: pointer;
   vertical-align: top;
+  font-size: 0.9em;
 }
 
 #lines .line .line-colour {
@@ -49,7 +78,7 @@ header h1, main {
   transition: opacity 0.4s, visibility 0.4s;
   list-style: none;
   margin: 0;
-  padding: 4px;
+  padding: 0;
   background-color: white;
   border: 1px solid #ccc;
   font-size: 0.9em;
