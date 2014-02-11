@@ -149,7 +149,7 @@ body {
 }
 
 #tooltip {
-  visibility: none;
+  visibility: hidden;
   position: absolute;
   padding: 4px;
   background-color: white;

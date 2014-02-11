@@ -103,6 +103,9 @@ render = (lineId, stations) ->
     .transition()
     .remove()
 
+  # Hide the tooltip
+  tooltip.style('visibility', null)
+
   # Set the x domain to the number of stations
   x.domain([0, stations.length - 1])
 
