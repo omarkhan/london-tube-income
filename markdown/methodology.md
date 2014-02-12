@@ -18,7 +18,8 @@ depth-first search to find all branches on each line.
 The end result is a big JSON that is displayed using SVG with [d3][7]. No other
 frameworks are used. Source code for the visualization and the data processing
 [available on github][8]. Thanks to [Ben Barnett][9] for the [original
-version][10] of the SVG tube map used above.
+version][10] of the SVG tube map used above, and to [John Galantini][11] for
+the tube map font taken from his [CSS tube map][12] project.
 
 [1]: http://www.doogal.co.uk/london_stations.php
 [2]: http://commons.wikimedia.org/wiki/London_Underground_geographic_maps/CSV
@@ -30,3 +31,5 @@ version][10] of the SVG tube map used above.
 [8]: https://github.com/omarkhan/london-tube-income
 [9]: http://www.benbarnett.net/
 [10]: https://github.com/benbarnett/SVG-Tube-Map
+[11]: http://www.johngalantini.com/
+[12]: http://www.csstubemap.co.uk/
