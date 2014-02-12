@@ -6,24 +6,7 @@
 
 {% block main %}
 <section id="text">
-  <p><a href="http://www.newyorker.com/sandbox/business/subway.html">This
-    feature in the New Yorker</a> shows median household income across the
-    city's subway network. It shows some serious inequality: line 2 rises from
-    the lowest depths of $13,750 at East 180 St. in the Bronx to the staggering
-    heights of $205,192 at Park Place in downtown Manhattan.</p>
-
-  <p><a href="http://dangrover.com/">Dan Grover</a> put together <a
-    href="http://dangrover.github.io/sf-transit-inequality/">a similar
-    visualization for the San Francisco bay area</a>. Turns out the bay area is
-    pretty unequal too: in a single CalTrain stop, median annual income plummets
-    from $193,125 at Atherton to just $30,080 at Redwood City.</p>
-
-  <p>I was curious what this kind of visualization would look like for my city,
-    London. The surprising result: while there is considerable inequality, it
-    doesn't come close to the factor-of-10 gap you can find in NY and SF. I
-    suspect part of it has to do with differences in the datasets &ndash; the
-    figures I'm using here are model-based estimates of weekly household
-    income.</p>
+  {{ markdown.index|safe }}
 </section>
 
 <section id="visualization">
@@ -52,37 +35,7 @@
 {% block footer %}
 <div id="footer-content">
   <section id="methodology">
-    <h2>Methodology</h2>
-    <p>Starting points: a <a href="http://www.doogal.co.uk/london_stations.php">
-      csv of tube station coordinates</a> from Chris Bell, an <a
-      href="http://commons.wikimedia.org/wiki/London_Underground_geographic_maps/CSV">
-      adjacency list representation of the tube network graph</a> from wikimedia,
-      and the latest <a
-      href="http://www.neighbourhood.statistics.gov.uk/dissemination/Info.do?page=analysisandguidance/analysisarticles/income-small-area-model-based-estimates-200708.htm">MSOA-level
-      model-based income estimates</a> from the neighbourhood statistics website.
-      Data from 2007/08.</p>
-
-    <p>Station coordinates are matched up with <a
-      href="http://www.ons.gov.uk/ons/guide-method/geography/beginner-s-guide/census/super-output-areas--soas-/index.html">MSOAs</a>
-      by first converting them to postcodes using the <a
-      href="http://uk-postcodes.com/api">UK Postcodes API</a>. These postcodes
-      are then matched up with MSOA names using the <a
-      href="http://www.neighbourhood.statistics.gov.uk/dissemination/Info.do?page=nde.htm">
-      neighbourhood statistics API</a>. Some distance-calculating guesswork is
-      used when the API fails for no apparent reason.</p>
-
-    <p>Once each station has been mapped to a MSOA, we can map the income data.
-      This is then combined with our graph of stations, which we walk using
-      depth-first search to find all branches on each line.</p>
-
-    <p>The end result is a big JSON that is displayed using SVG with <a
-      href="http://d3js.org/">d3</a>. No other frameworks are used. Source code
-      for the visualization and the data processing <a
-      href="https://github.com/omarkhan/london-tube-income">available on
-      github</a>. Thanks to <a href="http://www.benbarnett.net/">Ben
-      Barnett</a> for the <a
-      href="https://github.com/benbarnett/SVG-Tube-Map">original version</a> of
-      the SVG tube map used above.</p>
+    {{ markdown.methodology|safe }}
   </section>
 </div>
 {% endblock %}
