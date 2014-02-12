@@ -22,8 +22,8 @@ version][10] of the SVG tube map used above, and to [John Galantini][11] for
 the tube map font taken from his [CSS tube map][12] project.
 
 My name is Omar, I'm a programmer. Get in touch:
-[![linkedin](/static/img/webicon-linkedin.svg)][13]
-[![github](/static/img/webicon-github.svg)][14]
+[![linkedin](./static/img/webicon-linkedin.svg)][13]
+[![github](./static/img/webicon-github.svg)][14]
 
 [1]: http://www.doogal.co.uk/london_stations.php
 [2]: http://commons.wikimedia.org/wiki/London_Underground_geographic_maps/CSV
