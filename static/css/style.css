@@ -35,7 +35,7 @@ p {
 header, footer {
   background-color: #262f7e;
   color: white;
-  padding: 1.5em 0;
+  padding: 1.75em 0;
 }
 
 header {
@@ -53,6 +53,11 @@ footer a {
 header > h1, main, #footer-content {
   width: 960px;
   margin: 0 auto;
+}
+
+.fb-like {
+  line-height: 20px;
+  margin-left: 15px;
 }
 
 #text, #methodology {

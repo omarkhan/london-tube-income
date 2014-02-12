@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 
 {% block header %}
-<h1>MIND THE GAP</h1>
+<h1>MIND THE GAP {% include "social.html" %}</h1>
+<a href="https://github.com/omarkhan/london-tube-income"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
 {% endblock %}
 
 {% block main %}
@@ -41,6 +42,8 @@
 {% endblock %}
 
 {% block scripts %}
+{% include "facebook.html" %}
+{% include "twitter.html" %}
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <script>
   window.DATA = {% include "data.json" %};
