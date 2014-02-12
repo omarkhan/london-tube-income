@@ -1,0 +1,2782 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width">
+
+  <link rel="shortcut icon" href="./static/favicon.ico"> 
+  <link rel="stylesheet" href="./static/css/style.css">
+
+  
+  <title>Household income by tube station</title>
+  
+</head>
+<body>
+  <header>
+    
+<h1>Household income by tube station</h1>
+
+  </header>
+  <main>
+    
+<section id="text">
+  <p><a href="http://www.newyorker.com/sandbox/business/subway.html">This feature in the New Yorker</a> shows median household income across the
+city's subway network. It shows some serious inequality: line 2 rises from the
+lowest depths of $13,750 at East 180 St. in the Bronx to the staggering heights
+of $205,192 at Park Place in downtown Manhattan.</p>
+<p><a href="http://dangrover.com/">Dan Grover</a> put together <a href="http://dangrover.github.io/sf-transit-inequality/">a similar visualization for the San Francisco bay
+area</a>. Turns out the bay area is pretty unequal too: in a single CalTrain
+stop, median annual income plummets from $193,125 at Atherton to just $30,080
+at Redwood City.</p>
+<p>I was curious what this kind of visualization would look like for my city,
+London. The surprising result: while there is considerable inequality, it
+doesn't come close to the factor-of-10 gap you can find in NY and SF. I suspect
+part of it has to do with differences in the datasets &ndash; the figures I'm
+using here are model-based estimates of weekly household income.</p>
+</section>
+
+<section id="visualization">
+  <div id="lines">
+    <div class="bakerloo line"><div class="line-colour"></div><div class="line-name">Bakerloo</div><ul class="branches"><li class="branch">Harrow &amp; Wealdstone to Elephant &amp; Castle</li></ul></div><div class="central line"><div class="line-colour"></div><div class="line-name">Central</div><ul class="branches"><li class="branch">Epping to Ealing Broadway (via Newbury Park)</li><li class="branch">Epping to Ealing Broadway (via Woodford)</li><li class="branch">Epping to West Ruislip (via Woodford)</li></ul></div><div class="circle line"><div class="line-colour"></div><div class="line-name">Circle</div><ul class="branches"><li class="branch">Hammersmith to Bayswater</li></ul></div><div class="district line"><div class="line-colour"></div><div class="line-name">District</div><ul class="branches"><li class="branch">Earl&#39;s Court to Ealing Broadway</li><li class="branch">Earl&#39;s Court to Edgware Road</li><li class="branch">Earl&#39;s Court to Upminster</li><li class="branch">Earl&#39;s Court to Wimbledon</li><li class="branch">Earl&#39;s Court to Richmond</li></ul></div><div class="hammersmith line"><div class="line-colour"></div><div class="line-name">Hammersmith &amp; City</div><ul class="branches"><li class="branch">Hammersmith to Barking</li></ul></div><div class="jubilee line"><div class="line-colour"></div><div class="line-name">Jubilee</div><ul class="branches"><li class="branch">Stanmore to Stratford</li></ul></div><div class="metropolitan line"><div class="line-colour"></div><div class="line-name">Metropolitan</div><ul class="branches"><li class="branch">Aldgate to Uxbridge</li><li class="branch">Aldgate to Amersham</li><li class="branch">Aldgate to Chesham</li><li class="branch">Aldgate to Watford</li></ul></div><div class="northern line"><div class="line-colour"></div><div class="line-name">Northern</div><ul class="branches"><li class="branch">Morden to High Barnet (via Bank)</li><li class="branch">Morden to High Barnet (via Charing Cross)</li><li class="branch">Morden to Edgware (via Bank)</li><li class="branch">Morden to Edgware (via Charing Cross)</li></ul></div><div class="piccadilly line"><div class="line-colour"></div><div class="line-name">Piccadilly</div><ul class="branches"><li class="branch">Cockfosters to Heathrow</li><li class="branch">Cockfosters to Uxbridge</li></ul></div><div class="victoria line"><div class="line-colour"></div><div class="line-name">Victoria</div><ul class="branches"><li class="branch">Walthamstow Central to Brixton</li></ul></div><div class="waterloo line"><div class="line-colour"></div><div class="line-name">Waterloo &amp; City</div><ul class="branches"><li class="branch">Waterloo to Bank</li></ul></div>
+  </div>
+  <svg xmlns="http://www.w3.org/2000/svg" id="map" x="0px" y="0px" width="960" height="850" viewBox="0 0 2673.8766 1885.32" preserveAspectRatio="xMinYMin meet">
+  <style>
+    path, line {
+      fill: none;
+      stroke-width: 6.65;
+    }
+  </style>
+  <g id="map-content">
+    <path class="river" d="m 102.273,1516.29 387.842,0.03 c 8.277,0 14.988,-6.71 14.988,-15 l 0.004,-264.42 c 0,-16 12.963,-28.97 28.955,-28.97 l 129.822,-0.181 c 8,0 15.239,3.23 20.477,8.49 5.232,5.23 90.248,91.17 92.965,93.88 2.701,2.71 6.445,4.38 10.59,4.38 l 368.754,-0.22 c 6.05,0 10.95,-4.91 10.95,-10.96 v -143.24 c 0,-15.99 12.97,-28.97 28.95,-28.97 l 262.2,0.05 c 2.99,-0.08 5.79,-1.32 7.87,-3.38 l 62.31,-60.33 2.75,-2.77 c 5.46,-5.67 13.1,-8.971 21.149,-8.891 l 292.44,-0.05 c 16.79,0 30.39,13.62 30.39,30.41 l 0.051,188.28 c 0,4.87 3.939,8.83 8.819,8.83 l 112.431,0.029 c 5.119,0 9.279,-4.17 9.279,-9.27 l -0.01,-179.82 c 0,-17.64 14.29,-31.979 31.91,-31.979 l 123.01,-0.04 c 19.4,0 35.18,15.72 35.18,35.13 v 120.399 c 0,4.341 3.511,7.87 7.84,7.87 l 321.511,-0.02 v 25.25 l -315.72,0.04 c -20.37,0 -36.94,-16.5 -36.94,-36.88 l 0.01,-120.011 c 0,-5.63 -4.55,-10.21 -10.18,-10.21 h -125.83 c -5.11,0 -9.25,4.15 -9.25,9.28 l 0.01,179.82 c 0,17.63 -14.3,31.979 -31.93,31.979 l -111.26,-0.04 c -16.8,0 -30.46,-13.609 -30.46,-30.41 V 1085.18 c 0,-6.37 -5.16,-11.54 -11.54,-11.54 l -289.86,0.069 c -2.98,0.08 -5.79,1.32 -7.86,3.37 l -65.06,63.11 c -5.44,5.66 -13.09,8.979 -21.16,8.89 l -261.45,-0.01 c -6.38,0 -11.57,5.18 -11.57,11.56 l 0.04,139.08 c 0,16 -4.76,28.971 -20.75,28.971 l -377.399,0.279 c -7.999,0 -15.237,-3.239 -20.479,-8.489 -5.234,-5.25 -90.291,-91.181 -93.004,-93.881 -2.717,-2.72 -6.457,-4.409 -10.603,-4.409 l -129.012,0.149 c -8.279,0 -14.99,6.721 -14.99,15 v 264.431 c 0,16 -12.963,28.96 -28.955,28.96 H 102.273 v -14.43" style="fill:#c7eafb;stroke:#00aeef;stroke-width:1"/>
+    <g class="lines">
+      <g id="dlr">
+        <path d="m 1958.84,989.007 c 4.391,0 10.811,2.813 14.25,6.259 l 9.44,9.443 c 3.45,3.44 6.26,10.24 6.26,15.11 m 196.7,-30.805 c 4.87,0 11.67,2.814 15.12,6.254 l 314.56,314.571" style="stroke:#00b1b0"/>
+        <path d="m 2083.08,694.799 v 14.131 c 0,4.869 -2.82,11.67 -6.26,15.11 l -81.771,81.763 c -3.45,3.442 -6.26,8.588 -6.26,13.516 v 642.531" style="stroke:#00b1b0"/>
+        <path d="m 2083.08,694.799 v 14.131 c 0,4.869 -2.82,11.67 -6.26,15.11 l -81.771,81.763 c -3.45,3.442 -6.26,8.588 -6.26,13.516 v 642.531" style="stroke:#ffffff;stroke-width:2.2"/>
+        <path d="m 1780.36,989.007 c -4.87,0 -11.671,2.813 -15.11,6.259 -4.7,4.688 -27.36,27.354 -27.36,27.354 m -152.05,-58.592 h 152.5 c 4.87,0 11.68,2.826 15.12,6.265 l 12.45,12.452 c 3.439,3.439 10.25,6.263 15.12,6.263 h 465.76 c 4.87,0 11.67,2.813 15.11,6.259 l 187.67,187.674" style="stroke:#00b1b0"/>
+        <path d="m 1780.36,989.007 c -4.87,0 -11.671,2.813 -15.11,6.259 -4.7,4.688 -27.36,27.354 -27.36,27.354 m -152.05,-58.592 h 152.5 c 4.87,0 11.68,2.826 15.12,6.265 l 12.45,12.452 c 3.439,3.439 10.25,6.263 15.12,6.263 h 465.76 c 4.87,0 11.67,2.813 15.11,6.259 l 187.67,187.674 M 1958.84,989.007 c 4.391,0 10.811,2.813 14.25,6.259 l 9.44,9.443 c 3.45,3.44 6.26,10.24 6.26,15.11 m 196.7,-30.805 c 4.87,0 11.67,2.814 15.12,6.254 l 314.56,314.571" style="stroke:#ffffff;stroke-width:2.2"/>
+      </g>
+      <g id="waterloo">
+        <path class="main" d="m 1346.09,1164.15 134.17,-0.01 c 4.87,0 11.67,-2.82 15.12,-6.261 l 61.31,-61.31 c 3.44,-3.45 6.261,-10.25 6.261,-15.12 V 940.356" style="stroke:#86cebc"/>
+      </g>
+      <g id="bakerloo">
+        <path d="m 757.851,327.657 v 306.33 c 0,4.871 0,12.84 0,17.711 v 6.508 c 0,5.564 2.443,11.293 6.264,15.121 l 49.406,49.4 c 3.436,3.436 10.244,6.256 15.115,6.256 l 237.124,0.006 c 4.87,0 11.67,2.822 15.11,6.26 l 115.2,115.199 c 3.45,3.445 6.26,10.244 6.26,15.113 v 48.562 c 0,4.871 2.82,11.67 6.26,15.115 l 124.76,124.773 c 3.45,3.439 6.27,10.25 6.27,15.109 v 233.311 c 0,4.87 2.82,11.67 6.26,15.12 l 23.81,23.819" class="main" style="stroke:#b06010"/>
+      </g>
+      <g id="jubilee">
+        <path style="stroke:#939ba1" d="m 856.8401,303.395 v 122.848 c 0,4.871 2.813,11.674 6.264,15.115 l 254.237,254.24 c 3.44,3.444 6.26,10.242 6.26,15.113 V 949.78 c 0,4.869 2.82,11.67 6.26,15.115 l 161.63,160.805 c 3.44,3.44 6.25,10.24 6.25,15.11 l 0.03,36.67 c 0,11.701 9.48,21.18 21.18,21.18 h 148.32 c 4.87,0 11.67,-2.81 15.12,-6.26 l 77.44,-77.46 m 10e-4,0 c 3.45,-3.44 10.26,-6.25 15.12,-6.25 h 473.58 c 4.87,0 11.659,-2.821 15.109,-6.26 l 59.38,-59.391 c 3.451,-3.45 6.271,-10.25 6.271,-15.12 V 745.834 c 0,-4.869 -2.821,-11.669 -6.271,-15.121 l -45.1,-45.109" class="main"/>
+      </g>
+      <g id="victoria">
+        <path d="m 1321.47,1492.1 -171.229,-171.23 c -3.44,-3.439 -6.26,-10.24 -6.26,-15.109 V 964.315 c 0,-4.871 2.82,-11.674 6.26,-15.109 l 236.56,-236.557 c 3.44,-3.441 10.24,-6.266 15.11,-6.266 h 213.45 c 4.87,0 11.67,-2.816 15.12,-6.258 l 36.25,-36.246 c 3.439,-3.439 6.25,-10.238 6.25,-15.113 V 533.719 c 0,-4.869 2.819,-11.668 6.26,-15.109 l 67.68,-67.664 c 3.44,-3.447 10.24,-6.266 15.11,-6.266 h 257.45" class="main" style="stroke:#009ddc"/>
+      </g>
+      <g id="northern">
+        <path d="m 1379.47,646.51 c 0,-4.871 -2.82,-11.67 -6.26,-15.115 l -0.76,-0.766 c -3.44,-3.445 -6.26,-10.244 -6.26,-15.113 v -18.322 c 0,-4.871 2.82,-11.68 6.26,-15.115 l 63.24,-63.25 c 3.45,-3.448 6.26,-10.248 6.26,-15.12 v -343" style="stroke:#000000"/>
+        <path d="m 1313.78,1396.5 c 3.43,-3.439 6.25,-10.25 6.25,-15.12 m 32.87,-734.87 c 0,-4.871 2.82,-11.67 6.26,-15.115 l 0.77,-0.766 c 3.44,-3.445 6.26,-10.244 6.26,-15.113 v -18.322 c 0,-4.871 -2.82,-11.67 -6.26,-15.115 -3.53,-3.528 -312.56,-312.557 -312.56,-312.557 m 332.1,376.988 c 0,-4.871 -2.82,-11.67 -6.26,-15.115 l -0.76,-0.766 c -3.44,-3.445 -6.26,-10.244 -6.26,-15.113 v -18.322 c 0,-4.871 2.82,-11.68 6.26,-15.115" style="stroke:#000000"/>
+        <path d="m 1379.48,709.985 v -63.469 c 0,-4.871 -2.81,-11.674 -6.26,-15.115 l -0.76,-0.766 c -3.44,-3.441 -6.26,-10.246 -6.26,-15.115 v -18.316 c 0,-4.875 2.82,-11.678 6.26,-15.118 l 63.24,-63.248 c 3.45,-3.445 6.27,-10.244 6.27,-15.115 v -342.98" style="stroke:#000000"/>
+        <path style="stroke:#000000" d="m 1441.95,299.774 c 0,-4.869 -2.81,-11.668 -6.26,-15.115 -2.36,-2.362 -2.24,-2.246 -38.79,-38.799"/>
+        <path style="stroke:#000000" d="m 1313.79,1396.48 c 3.44,-3.44 6.26,-10.25 6.26,-15.12 V 764.917 c 0,-4.872 2.82,-11.672 6.26,-15.116 l 20.35,-20.357 c 3.45,-3.442 6.26,-10.047 6.26,-14.68 v -68.248 c 0,-4.871 2.82,-11.674 6.26,-15.115 l 0.76,-0.766 c 3.45,-3.441 6.26,-10.246 6.26,-15.115 v -18.316 c 0,-4.875 -2.81,-11.678 -6.26,-15.118 -3.53,-3.527 -303.56,-303.566 -303.56,-303.566 m -51.05,1426.399 572.42,-572.399 c 3.439,-3.45 6.26,-10.25 6.26,-15.12 V 755.471 c 0,-5.965 -2.42,-11.371 -6.33,-15.279 -3.91,-3.916 -9.33,-6.334 -15.29,-6.334 h -161.62 c -11.75,0 -21.29,-9.531 -21.29,-21.289 v -66.053 c 0,-4.871 -2.81,-11.674 -6.26,-15.115 l -0.76,-0.766 c -3.44,-3.441 -6.26,-10.246 -6.26,-15.115 v -18.316 c 0,-4.875 2.82,-11.678 6.26,-15.118" class="main"/>
+      </g>
+      <g id="piccadilly">
+        <path style="stroke:#1c3f94" d="m 232.332,1298.29 c -4.659,4.66 -6.995,10.761 -6.993,16.88 v 47.75 c 0,6.11 -2.33,12.221 -6.99,16.881 -0.232,0.239 0,0 0,0 -4.322,4.31 -10.289,6.989 -16.873,6.989 -6.109,0 -12.223,-2.34 -16.875,-6.989 -4.318,-4.341 -6.984,-10.301 -6.984,-16.881 0,-6.6 2.67,-12.58 7.006,-16.899 l 47.826,-47.83 M 131.171,1399.45 441.734,1088.89 c 3.439,-3.45 10.244,-6.261 15.115,-6.261 h 132.006"/>
+        <path style="stroke:#1c3f94" d="m 488.083,1082.63 h 524.877 c 4.87,0 11.68,-2.83 15.12,-6.27 l 92.63,-92.623 c 3.45,-3.446 10.25,-6.262 15.12,-6.262 h 156.95 c 4.88,0 11.68,-2.821 15.12,-6.263 l 86.15,-86.151 c 3.44,-3.445 6.26,-10.244 6.26,-15.113 v -98.739 c 0,-4.869 2.82,-11.669 6.27,-15.111 l 321.5,-321.508 c 3.45,-3.445 6.26,-10.252 6.26,-15.119 V 168.768" class="main"/>
+        <path style="stroke:#1c3f94" d="m 498.677,1082.629 c -7.498,-0.02 -14.875,-2.829 -20.603,-8.54 l -6.973,-6.96 c -2.717,-2.729 -4.377,-6.42 -4.383,-10.579 V 423.514 c 0,-4.867 -2.826,-11.662 -6.273,-15.099 0,0 -68.414,-68.073 -71.307,-70.967 -2.803,-2.803 -8.34,-5.819 -12.896,-5.819 -5.565,0 -248.11,0 -248.11,0"/>
+      </g>
+      <g id="central">
+        <path style="stroke:#ee3224" d="m 322.761,396.11 v 222.43 c 0,4.869 2.819,11.679 6.264,15.121 l 257.258,257.252 c 3.445,3.451 10.25,6.263 15.113,6.263 M 2134.1,499.766 c 0,-7.607 6.16,-13.771 13.771,-13.771 h 127.069 c 7.601,0 13.771,-6.166 13.771,-13.776 V 317.313 c 0,-7.604 -6.17,-13.775 -13.771,-13.775 h -127.07 c -7.61,0 -13.771,6.171 -13.771,13.775 m 10e-4,-199.645 v 516.811 c 0,2.814 -2.819,9.627 -6.26,13.066 L 1980.1,795.286 c -3.439,3.445 -10.239,6.257 -15.109,6.257"/>
+        <path style="stroke:#ee3224" d="m 418.041,897.184 h 1044.88 c 4.87,0 11.67,2.815 15.11,6.264 l 33.239,33.236 c 3.45,3.441 10.24,6.258 15.11,6.258 h 79.49 c 4.87,0 11.67,-2.817 15.12,-6.258 l 128.86,-128.873 c 3.45,-3.445 10.25,-6.268 15.12,-6.268 h 200.01" class="main"/>
+      </g>
+      <g id="hammersmith">
+        <path d="M 756.291,1062.209 V 844.254 c 0,-4.869 2.824,-11.671 6.265,-15.119 l 73.527,-73.529 c 5.336,-5.336 12.44,-8.275 19.985,-8.275 h 611.362 c 7.55,0 14.65,2.939 19.99,8.275 l 78.26,78.254 c 2.83,2.822 6.58,4.375 10.58,4.375 h 149.75 c 7.551,0 14.65,2.947 19.99,8.275 5.34,5.346 8.27,12.44 8.27,19.99 0,8.184 0,45.948 0,45.948 0,5.527 2.11,11.06 6.33,15.275 l 7.59,7.555 c 4.74,4.74 7.881,7.113 14.091,7.113 6.21,0 12.43,-2.373 17.17,-7.113 l 105.33,-105.328 c 2.63,-2.602 5.8,-4.446 9.18,-5.866 3.39,-1.388 6.94,-2.33 10.63,-2.351 l 221.221,0.014 c 0.119,-0.004 0.229,-0.004 0.34,0 1.21,-0.018 3.41,-0.483 5.41,-1.334 2.1,-0.844 4.05,-2.133 4.869,-2.985 l 110.91,-110.908" class="main" style="stroke:#f386a1"/>
+      </g>
+      <g id="circle">
+        <path d="M 762.953,1062.209 V 844.254 c -0.024,-1.17 0.453,-3.461 1.334,-5.541 0.849,-2.101 2.136,-4.052 2.98,-4.865 l 73.527,-73.531 c 4.125,-4.106 9.456,-6.317 15.274,-6.324 l 611.362,-0.014 c 5.97,0 11.37,2.418 15.29,6.332 l 78.25,78.248 c 3.92,3.91 9.32,6.324 15.29,6.324 h 149.75 c 5.971,0 11.37,2.42 15.28,6.334 3.91,3.916 6.33,9.317 6.33,15.283 v 102.284 c 0,5.961 -2.42,11.371 -6.33,15.283 -3.91,3.912 -9.31,6.328 -15.28,6.328 h -155.93 c -5.97,0 -11.37,2.42 -15.28,6.326 l -91.83,91.839 c -2.83,2.819 -6.59,4.38 -10.58,4.38 H 948.564 c -5.961,0 -11.371,-2.42 -15.279,-6.32 -4.217,-4.229 -6.33,-9.76 -6.33,-15.29 V 793.077 c 0,-5.971 2.416,-11.371 6.33,-15.28 3.908,-3.916 9.318,-6.334 15.279,-6.334 h 56.626" class="main" style="stroke:#ffd200"/>
+      </g>
+      <g id="district">
+        <path d="m 572.273,1099.589 c -5.973,0 -11.375,2.421 -15.285,6.33 -3.914,3.91 -6.33,9.311 -6.33,15.29 V 1281.3" style="stroke:#00853f"/>
+        <path d="m 876.484,1012.36 c 0,0 0,59.929 0,65.74 0,5.96 2.42,11.37 6.33,15.279 3.91,3.91 9.318,6.33 15.283,6.33 m -21.613,346.681 c 0,0 0,-319.261 0,-325.061 0,-5.979 2.42,-11.38 6.33,-15.29 3.91,-3.91 9.318,-6.33 15.283,-6.33 M 421.152,903.834 c 0,0 11.84,0 17.303,0 5.968,0 11.371,2.42 15.283,6.331 3.91,3.914 6.33,9.31 6.33,15.285 v 131.009 c 0,5.97 2.42,11.38 6.328,15.28 l 21.527,21.521 c 3.912,3.909 9.315,6.329 15.285,6.329 h 949.182 c 5.97,0 11.37,-2.42 15.28,-6.329 l 91.83,-91.83 c 2.83,-2.832 6.59,-4.384 10.58,-4.384 h 165.31 c 7.55,0 14.65,-2.942 19.99,-8.284 l 154.101,-154.111 c 3.439,-3.449 10.25,-6.262 15.109,-6.262 l 221.43,0.008 c 4.87,0 11.67,-2.82 15.11,-6.266 l 341.28,-341.277" class="main" style="stroke:#00853f"/>
+        <path d="m 898.695,1099.709 c 5.961,0 11.828,-2.89 15.277,-6.33 3.453,-3.46 6.326,-9.319 6.326,-15.279 V 793.077 c 0,-7.547 2.944,-14.647 8.284,-19.983 5.339,-5.344 12.435,-8.279 19.982,-8.279 h 56.306" style="stroke:#00853f"/>
+      </g>
+      <g id="overground">
+        <path d="M 764.466,642.834 V 123.598 m -82.744,511.399 c -3.435,3.447 -6.262,10.248 -6.265,15.119 m 183.679,534.294 c 0,4.87 2.821,11.67 6.266,15.12 l 197.728,197.73 M 2083.16,689.239 H 1908.8 c -4.87,0 -11.68,-2.817 -15.11,-6.258 l -68.909,-68.897 c -3.44,-3.445 -10.24,-6.259 -15.11,-6.259 h -291.95 c -4.87,0 -11.67,-2.819 -15.12,-6.26 l -103.33,-103.344 c -3.45,-3.447 -10.25,-6.262 -15.13,-6.262 h -129.93 c -4.86,0 -11.67,2.815 -15.11,6.262 l -83.54,83.539 c -3.44,3.446 -10.24,6.26 -15.11,6.26 h -402.9 c -4.871,0 -11.67,2.816 -15.115,6.266 m -106.054,106.05 c -3.441,3.44 -6.259,10.248 -6.259,15.12 V 1034.5 c 0,4.87 -2.821,11.681 -6.266,15.12 l -51.572,51.61 c -5.104,5.08 -8.284,12.189 -8.28,19.979 0,8.41 0,160.091 0,160.091 M 2265.63,704.612 v -56.76 c 0,-4.869 -2.81,-11.67 -6.26,-15.115 l -17.16,-17.162 c -3.44,-3.448 -10.25,-6.266 -15.11,-6.266 h -217.24 c -4.86,0 -11.671,-2.82 -15.11,-6.256 L 1955,563.299 c -3.45,-3.445 -6.27,-10.25 -6.27,-15.119 v -72.472 c 0,-4.868 -2.811,-11.668 -6.261,-15.116 l -65.1,-65.101 c -3.431,-3.44 -10.24,-6.26 -15.11,-6.26 H 1632.3 c -4.88,0 -11.68,2.82 -15.12,6.26 l -71.59,71.59 c -3.45,3.441 -10.24,6.259 -15.109,6.259 H 1371.6" style="stroke:#f58025"/>
+        <path d="M 764.466,642.834 V 123.598 m -82.744,511.399 c -3.435,3.447 -6.262,10.248 -6.265,15.119 m 183.679,534.294 c 0,4.87 2.821,11.67 6.266,15.12 l 197.728,197.73 M 2083.16,689.239 H 1908.8 c -4.87,0 -11.68,-2.817 -15.11,-6.258 l -68.909,-68.897 c -3.44,-3.445 -10.24,-6.259 -15.11,-6.259 h -291.95 c -4.87,0 -11.67,-2.819 -15.12,-6.26 l -103.33,-103.344 c -3.45,-3.447 -10.25,-6.262 -15.13,-6.262 h -129.93 c -4.86,0 -11.67,2.815 -15.11,6.262 l -83.54,83.539 c -3.44,3.446 -10.24,6.26 -15.11,6.26 h -402.9 c -4.871,0 -11.67,2.816 -15.115,6.266 m -106.054,106.05 c -3.441,3.44 -6.259,10.248 -6.259,15.12 V 1034.5 c 0,4.87 -2.821,11.681 -6.266,15.12 l -51.572,51.61 c -5.104,5.08 -8.284,12.189 -8.28,19.979 0,8.41 0,160.091 0,160.091 M 2265.63,704.612 v -56.76 c 0,-4.869 -2.81,-11.67 -6.26,-15.115 l -17.16,-17.162 c -3.44,-3.448 -10.25,-6.266 -15.11,-6.266 h -217.24 c -4.86,0 -11.671,-2.82 -15.11,-6.256 L 1955,563.299 c -3.45,-3.445 -6.27,-10.25 -6.27,-15.119 v -72.472 c 0,-4.868 -2.811,-11.668 -6.261,-15.116 l -65.1,-65.101 c -3.431,-3.44 -10.24,-6.26 -15.11,-6.26 H 1632.3 c -4.88,0 -11.68,2.82 -15.12,6.26 l -71.59,71.59 c -3.45,3.441 -10.24,6.259 -15.109,6.259 H 1371.6" style="stroke:#ffffff;stroke-width:2.2"/>
+        <path d="m 681.767,635.006 c -3.443,3.442 -6.266,10.243 -6.275,15.112 l -0.159,120.879 c -0.003,4.865 2.805,11.671 6.25,15.111 l 171.331,171.33 c 3.435,3.444 6.255,10.252 6.255,15.121 V 1184.4 c 0,4.87 2.819,11.67 6.264,15.11 l 197.727,197.739 m 1019.98,-708 h -174.35 c -4.87,0 -11.67,-2.823 -15.101,-6.264 l -68.909,-68.891 c -3.44,-3.445 -10.24,-6.258 -15.11,-6.258 h -291.95 c -4.859,0 -11.659,-2.824 -15.109,-6.265 l -103.33,-103.336 c -3.45,-3.445 -10.25,-6.264 -15.12,-6.264 h -129.92 c -4.87,0 -11.67,2.819 -15.12,6.264 l -83.54,83.535 c -3.44,3.445 -10.24,6.26 -15.11,6.26 h -402.88 c -4.881,0 -11.677,2.82 -15.119,6.265 L 616.427,700.338 c -3.445,3.44 -6.267,10.246 -6.267,15.118 V 1034.5 c 0,4.86 -2.813,11.66 -6.258,15.11 l -51.572,51.6 c -5.1,5.091 -8.28,12.21 -8.28,19.98 0,8.42 0,160.85 0,160.85" style="stroke:#f58025"/>
+        <path d="m 681.767,635.006 c -3.443,3.442 -6.266,10.243 -6.275,15.112 l -0.159,120.879 c -0.003,4.865 2.805,11.671 6.25,15.111 l 171.331,171.33 c 3.435,3.444 6.255,10.252 6.255,15.121 V 1184.4 c 0,4.87 2.819,11.67 6.264,15.11 l 197.727,197.739 m 1019.98,-708 h -174.35 c -4.87,0 -11.67,-2.823 -15.101,-6.264 l -68.909,-68.891 c -3.44,-3.445 -10.24,-6.258 -15.11,-6.258 h -291.95 c -4.859,0 -11.659,-2.824 -15.109,-6.265 l -103.33,-103.336 c -3.45,-3.445 -10.25,-6.264 -15.12,-6.264 h -129.92 c -4.87,0 -11.67,2.819 -15.12,6.264 l -83.54,83.535 c -3.44,3.445 -10.24,6.26 -15.11,6.26 h -402.88 c -4.881,0 -11.677,2.82 -15.119,6.265 L 616.427,700.338 c -3.445,3.44 -6.267,10.246 -6.267,15.118 V 1034.5 c 0,4.86 -2.813,11.66 -6.258,15.11 l -51.572,51.6 c -5.1,5.091 -8.28,12.21 -8.28,19.98 0,8.42 0,160.85 0,160.85" style="stroke:#ffffff;stroke-width:2.2"/>
+        <path d="m 1835.561,1363.62 c 0,-13.819 0,-35.31 0,-712.946" style="stroke:#f58025"/>
+        <path d="m 1733.51,1580.72 c 0,5.54 -2.109,11.069 -6.34,15.29 -21.109,21.109 -58.27,58.26 -58.27,58.26 m 166.661,-433.5 c 0,5.53 -2.121,11.06 -6.341,15.29 -7.659,7.66 -89.38,89.38 -89.38,89.38 -4.22,4.22 -6.33,8.2 -6.33,13.76 v 356.37" style="stroke:#f58025"/>
+        <path d="m 1733.51,1580.72 c 0,5.54 -2.109,11.069 -6.34,15.29 -21.109,21.109 -58.27,58.26 -58.27,58.26 m 166.661,-433.5 c 0,5.53 -2.121,11.06 -6.341,15.29 -7.659,7.66 -89.38,89.38 -89.38,89.38 -4.22,4.22 -6.33,8.1 -6.33,13.96 v 356.17 m 102.051,-331.95 c 0,-13.819 0,-35.31 0,-712.946" style="stroke:#ffffff;stroke-width:2.2"/>
+        <path d="m 1333.85,719.881 -42.51,-42.515 c -3.45,-3.446 -10.25,-6.264 -15.12,-6.264 H 779.236 c -3.516,0.049 -7.893,-1.713 -10.42,-4.318 -2.516,-2.448 -4.367,-6.791 -4.309,-10.418 V 123.625" style="stroke:#f58025"/>
+        <path d="m 1333.85,719.881 -42.51,-42.515 c -3.45,-3.446 -10.25,-6.264 -15.12,-6.264 H 779.236 c -3.516,0.049 -7.893,-1.713 -10.42,-4.318 -2.516,-2.448 -4.367,-6.791 -4.309,-10.418 V 123.625" style="stroke:#ffffff;stroke-width:2.2"/>
+      </g>
+      <g id="metropolitan">
+        <path d="m 121.296,324.977 h 254.946 c 5.974,0 13.289,3.461 17.511,7.678 l 78.764,78.76 c 3.44,3.447 10.244,6.265 15.115,6.265 h 147.379" style="stroke:#97005e"/>
+        <path style="stroke:#97005e" d="m 421.951,239.155 c -3.446,-3.446 -6.264,-10.248 -6.264,-15.115 v -55.252 m -194.697,1.345 c -4.869,0 -11.674,-2.818 -15.115,-6.263 l -31.877,-31.881"/>
+        <path style="stroke:#97005e" d="m 117.9,170.133 h 226.164 c 4.873,0 11.674,2.813 15.119,6.262 l 234.932,235.02 c 3.441,3.447 10.238,6.265 15.113,6.265 l 195.195,0.012 c 4.869,0 11.672,2.818 15.118,6.264 l 330.379,330.378 c 3.45,3.442 10.24,6.268 15.11,6.268 l 302.4,0.027 c 4,0 7.76,1.551 10.58,4.383 l 78.26,78.248 c 5.351,5.336 12.44,8.28 19.99,8.28 h 149.75 c 3.99,0 7.76,1.554 10.58,4.378 2.82,2.829 4.38,6.584 4.38,10.582 v 73.303" class="main"/>
+      </g>
+    </g>
+  </g>
+</svg>
+
+  <div id="tooltip">
+    <div class="station-name"></div>
+    <div class="station-income">£<span class="station-income-amount"></span> / week</div>
+  </div>
+</section>
+
+  </main>
+  <footer>
+    
+<div id="footer-content">
+  <section id="methodology">
+    <h2>Methodology</h2>
+<p>Starting points: a <a href="http://www.doogal.co.uk/london_stations.php">csv of tube station coordinates</a> from Chris Bell, an
+<a href="http://commons.wikimedia.org/wiki/London_Underground_geographic_maps/CSV">adjacency list representation of the tube network graph</a> from wikimedia,
+and the latest <a href="http://www.neighbourhood.statistics.gov.uk/dissemination/Info.do?page=analysisandguidance/analysisarticles/income-small-area-model-based-estimates-200708.htm">MSOA-level model-based income estimates</a> from the
+neighbourhood statistics website.  Data from 2007/08.</p>
+<p>Station coordinates are matched up with <a href="http://www.ons.gov.uk/ons/guide-method/geography/beginner-s-guide/census/super-output-areas--soas-/index.html">MSOAs</a> by first converting them to
+postcodes using the <a href="http://uk-postcodes.com/api">UK Postcodes API</a>. These postcodes are then matched up
+with MSOA names using the <a href="http://www.neighbourhood.statistics.gov.uk/dissemination/Info.do?page=nde.htm">neighbourhood statistics API</a>. Some
+distance-calculating guesswork is used when the API fails for no apparent
+reason.</p>
+<p>Once each station has been mapped to a MSOA, we can map the income data.
+This is then combined with our graph of stations, which we walk using
+depth-first search to find all branches on each line.</p>
+<p>The end result is a big JSON that is displayed using SVG with <a href="http://d3js.org/">d3</a>. No other
+frameworks are used. Source code for the visualization and the data processing
+<a href="https://github.com/omarkhan/london-tube-income">available on github</a>. Thanks to <a href="http://www.benbarnett.net/">Ben Barnett</a> for the <a href="https://github.com/benbarnett/SVG-Tube-Map">original
+version</a> of the SVG tube map used above, and to <a href="http://www.johngalantini.com/">John Galantini</a> for
+the tube map font taken from his <a href="http://www.csstubemap.co.uk/">CSS tube map</a> project.</p>
+  </section>
+</div>
+
+  </footer>
+  
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script>
+  window.DATA = {
+  "lines": [
+    {
+      "branches": [
+        {
+          "name": "Harrow & Wealdstone to Elephant & Castle",
+          "stations": [
+            {
+              "name": "Harrow and Wealdstone",
+              "income": "770"
+            },
+            {
+              "name": "Kenton",
+              "income": "910"
+            },
+            {
+              "name": "South Kenton",
+              "income": "810"
+            },
+            {
+              "name": "North Wembley",
+              "income": "750"
+            },
+            {
+              "name": "Wembley Central",
+              "income": "670"
+            },
+            {
+              "name": "Stonebridge Park",
+              "income": "690"
+            },
+            {
+              "name": "Harlesden",
+              "income": "590"
+            },
+            {
+              "name": "Willesden Junction",
+              "income": "700"
+            },
+            {
+              "name": "Kensal Green",
+              "income": "830"
+            },
+            {
+              "name": "Queen's Park",
+              "income": "910"
+            },
+            {
+              "name": "Kilburn Park",
+              "income": "590"
+            },
+            {
+              "name": "Maida Vale",
+              "income": "1160"
+            },
+            {
+              "name": "Warwick Avenue",
+              "income": "1160"
+            },
+            {
+              "name": "Paddington",
+              "income": "1070"
+            },
+            {
+              "name": "Edgware Road (Bakerloo)",
+              "income": "600"
+            },
+            {
+              "name": "Marylebone",
+              "income": "1130"
+            },
+            {
+              "name": "Baker Street",
+              "income": "1130"
+            },
+            {
+              "name": "Regent's Park",
+              "income": "930"
+            },
+            {
+              "name": "Oxford Circus",
+              "income": "930"
+            },
+            {
+              "name": "Piccadilly Circus",
+              "income": "1010"
+            },
+            {
+              "name": "Charing Cross",
+              "income": "1010"
+            },
+            {
+              "name": "Embankment",
+              "income": "1020"
+            },
+            {
+              "name": "Waterloo",
+              "income": "820"
+            },
+            {
+              "name": "Lambeth North",
+              "income": "820"
+            },
+            {
+              "name": "Elephant and Castle",
+              "income": "690"
+            }
+          ]
+        }
+      ],
+      "name": "Bakerloo",
+      "id": "bakerloo"
+    },
+    {
+      "branches": [
+        {
+          "name": "Epping to Ealing Broadway (via Newbury Park)",
+          "stations": [
+            {
+              "name": "Epping",
+              "income": "820"
+            },
+            {
+              "name": "Theydon Bois",
+              "income": "850"
+            },
+            {
+              "name": "Debden",
+              "income": "570"
+            },
+            {
+              "name": "Loughton",
+              "income": "880"
+            },
+            {
+              "name": "Buckhurst Hill",
+              "income": "840"
+            },
+            {
+              "name": "Woodford",
+              "income": "970"
+            },
+            {
+              "name": "Roding Valley",
+              "income": "820"
+            },
+            {
+              "name": "Chigwell",
+              "income": "940"
+            },
+            {
+              "name": "Grange Hill",
+              "income": "700"
+            },
+            {
+              "name": "Hainault",
+              "income": "740"
+            },
+            {
+              "name": "Fairlop",
+              "income": "740"
+            },
+            {
+              "name": "Barkingside",
+              "income": "730"
+            },
+            {
+              "name": "Newbury Park",
+              "income": "730"
+            },
+            {
+              "name": "Gants Hill",
+              "income": "760"
+            },
+            {
+              "name": "Redbridge",
+              "income": "850"
+            },
+            {
+              "name": "Wanstead",
+              "income": "980"
+            },
+            {
+              "name": "Leytonstone",
+              "income": "760"
+            },
+            {
+              "name": "Leyton",
+              "income": "740"
+            },
+            {
+              "name": "Stratford",
+              "income": "620"
+            },
+            {
+              "name": "Mile End",
+              "income": "590"
+            },
+            {
+              "name": "Bethnal Green",
+              "income": "550"
+            },
+            {
+              "name": "Liverpool Street",
+              "income": "1220"
+            },
+            {
+              "name": "Bank",
+              "income": "1220"
+            },
+            {
+              "name": "St. Pauls",
+              "income": "1220"
+            },
+            {
+              "name": "Chancery Lane",
+              "income": "840"
+            },
+            {
+              "name": "Holborn",
+              "income": "840"
+            },
+            {
+              "name": "Tottenham Court Road",
+              "income": "930"
+            },
+            {
+              "name": "Oxford Circus",
+              "income": "930"
+            },
+            {
+              "name": "Bond Street",
+              "income": "930"
+            },
+            {
+              "name": "Marble Arch",
+              "income": "1080"
+            },
+            {
+              "name": "Lancaster Gate",
+              "income": "1070"
+            },
+            {
+              "name": "Queensway",
+              "income": "920"
+            },
+            {
+              "name": "Notting Hill Gate",
+              "income": "1230"
+            },
+            {
+              "name": "Holland Park",
+              "income": "1350"
+            },
+            {
+              "name": "Shepherd's Bush",
+              "income": "920"
+            },
+            {
+              "name": "White City",
+              "income": "700"
+            },
+            {
+              "name": "East Acton",
+              "income": "700"
+            },
+            {
+              "name": "North Acton",
+              "income": "700"
+            },
+            {
+              "name": "West Acton",
+              "income": "910"
+            },
+            {
+              "name": "Ealing Broadway",
+              "income": "1110"
+            }
+          ]
+        },
+        {
+          "name": "Epping to Ealing Broadway (via Woodford)",
+          "stations": [
+            {
+              "name": "Epping",
+              "income": "820"
+            },
+            {
+              "name": "Theydon Bois",
+              "income": "850"
+            },
+            {
+              "name": "Debden",
+              "income": "570"
+            },
+            {
+              "name": "Loughton",
+              "income": "880"
+            },
+            {
+              "name": "Buckhurst Hill",
+              "income": "840"
+            },
+            {
+              "name": "Woodford",
+              "income": "970"
+            },
+            {
+              "name": "South Woodford",
+              "income": "850"
+            },
+            {
+              "name": "Snaresbrook",
+              "income": "900"
+            },
+            {
+              "name": "Leytonstone",
+              "income": "760"
+            },
+            {
+              "name": "Leyton",
+              "income": "740"
+            },
+            {
+              "name": "Stratford",
+              "income": "620"
+            },
+            {
+              "name": "Mile End",
+              "income": "590"
+            },
+            {
+              "name": "Bethnal Green",
+              "income": "550"
+            },
+            {
+              "name": "Liverpool Street",
+              "income": "1220"
+            },
+            {
+              "name": "Bank",
+              "income": "1220"
+            },
+            {
+              "name": "St. Pauls",
+              "income": "1220"
+            },
+            {
+              "name": "Chancery Lane",
+              "income": "840"
+            },
+            {
+              "name": "Holborn",
+              "income": "840"
+            },
+            {
+              "name": "Tottenham Court Road",
+              "income": "930"
+            },
+            {
+              "name": "Oxford Circus",
+              "income": "930"
+            },
+            {
+              "name": "Bond Street",
+              "income": "930"
+            },
+            {
+              "name": "Marble Arch",
+              "income": "1080"
+            },
+            {
+              "name": "Lancaster Gate",
+              "income": "1070"
+            },
+            {
+              "name": "Queensway",
+              "income": "920"
+            },
+            {
+              "name": "Notting Hill Gate",
+              "income": "1230"
+            },
+            {
+              "name": "Holland Park",
+              "income": "1350"
+            },
+            {
+              "name": "Shepherd's Bush",
+              "income": "920"
+            },
+            {
+              "name": "White City",
+              "income": "700"
+            },
+            {
+              "name": "East Acton",
+              "income": "700"
+            },
+            {
+              "name": "North Acton",
+              "income": "700"
+            },
+            {
+              "name": "West Acton",
+              "income": "910"
+            },
+            {
+              "name": "Ealing Broadway",
+              "income": "1110"
+            }
+          ]
+        },
+        {
+          "name": "Epping to West Ruislip (via Woodford)",
+          "stations": [
+            {
+              "name": "Epping",
+              "income": "820"
+            },
+            {
+              "name": "Theydon Bois",
+              "income": "850"
+            },
+            {
+              "name": "Debden",
+              "income": "570"
+            },
+            {
+              "name": "Loughton",
+              "income": "880"
+            },
+            {
+              "name": "Buckhurst Hill",
+              "income": "840"
+            },
+            {
+              "name": "Woodford",
+              "income": "970"
+            },
+            {
+              "name": "South Woodford",
+              "income": "850"
+            },
+            {
+              "name": "Snaresbrook",
+              "income": "900"
+            },
+            {
+              "name": "Leytonstone",
+              "income": "760"
+            },
+            {
+              "name": "Leyton",
+              "income": "740"
+            },
+            {
+              "name": "Stratford",
+              "income": "620"
+            },
+            {
+              "name": "Mile End",
+              "income": "590"
+            },
+            {
+              "name": "Bethnal Green",
+              "income": "550"
+            },
+            {
+              "name": "Liverpool Street",
+              "income": "1220"
+            },
+            {
+              "name": "Bank",
+              "income": "1220"
+            },
+            {
+              "name": "St. Pauls",
+              "income": "1220"
+            },
+            {
+              "name": "Chancery Lane",
+              "income": "840"
+            },
+            {
+              "name": "Holborn",
+              "income": "840"
+            },
+            {
+              "name": "Tottenham Court Road",
+              "income": "930"
+            },
+            {
+              "name": "Oxford Circus",
+              "income": "930"
+            },
+            {
+              "name": "Bond Street",
+              "income": "930"
+            },
+            {
+              "name": "Marble Arch",
+              "income": "1080"
+            },
+            {
+              "name": "Lancaster Gate",
+              "income": "1070"
+            },
+            {
+              "name": "Queensway",
+              "income": "920"
+            },
+            {
+              "name": "Notting Hill Gate",
+              "income": "1230"
+            },
+            {
+              "name": "Holland Park",
+              "income": "1350"
+            },
+            {
+              "name": "Shepherd's Bush",
+              "income": "920"
+            },
+            {
+              "name": "White City",
+              "income": "700"
+            },
+            {
+              "name": "East Acton",
+              "income": "700"
+            },
+            {
+              "name": "North Acton",
+              "income": "700"
+            },
+            {
+              "name": "Hanger Lane",
+              "income": "970"
+            },
+            {
+              "name": "Perivale",
+              "income": "820"
+            },
+            {
+              "name": "Greenford",
+              "income": "740"
+            },
+            {
+              "name": "Northolt",
+              "income": "810"
+            },
+            {
+              "name": "South Ruislip",
+              "income": "800"
+            },
+            {
+              "name": "Ruislip Gardens",
+              "income": "990"
+            },
+            {
+              "name": "West Ruislip",
+              "income": "860"
+            }
+          ]
+        }
+      ],
+      "name": "Central",
+      "id": "central"
+    },
+    {
+      "branches": [
+        {
+          "name": "Hammersmith to Bayswater",
+          "stations": [
+            {
+              "name": "Hammersmith",
+              "income": "800"
+            },
+            {
+              "name": "Goldhawk Road",
+              "income": "1110"
+            },
+            {
+              "name": "Shepherd's Bush Market",
+              "income": "840"
+            },
+            {
+              "name": "Wood Lane",
+              "income": "700"
+            },
+            {
+              "name": "Latimer Road",
+              "income": "630"
+            },
+            {
+              "name": "Ladbroke Grove",
+              "income": "930"
+            },
+            {
+              "name": "Westbourne Park",
+              "income": "600"
+            },
+            {
+              "name": "Royal Oak",
+              "income": "1060"
+            },
+            {
+              "name": "Paddington",
+              "income": "1070"
+            },
+            {
+              "name": "Edgware Road (Circle/District/Hammersmith and City)",
+              "income": "1080"
+            },
+            {
+              "name": "Baker Street",
+              "income": "1130"
+            },
+            {
+              "name": "Great Portland Street",
+              "income": "930"
+            },
+            {
+              "name": "Euston Square",
+              "income": "560"
+            },
+            {
+              "name": "Kings Cross St. Pancras",
+              "income": "650"
+            },
+            {
+              "name": "Farringdon",
+              "income": "860"
+            },
+            {
+              "name": "Barbican",
+              "income": "1220"
+            },
+            {
+              "name": "Moorgate",
+              "income": "1220"
+            },
+            {
+              "name": "Liverpool Street",
+              "income": "1220"
+            },
+            {
+              "name": "Aldgate",
+              "income": "1220"
+            },
+            {
+              "name": "Tower Hill",
+              "income": "1190"
+            },
+            {
+              "name": "Monument",
+              "income": "1220"
+            },
+            {
+              "name": "Cannon Street",
+              "income": "1220"
+            },
+            {
+              "name": "Mansion House",
+              "income": "1220"
+            },
+            {
+              "name": "Blackfriars",
+              "income": "1220"
+            },
+            {
+              "name": "Temple",
+              "income": "1010"
+            },
+            {
+              "name": "Embankment",
+              "income": "1020"
+            },
+            {
+              "name": "Westminster",
+              "income": "1020"
+            },
+            {
+              "name": "St. James's Park",
+              "income": "1020"
+            },
+            {
+              "name": "Victoria",
+              "income": "820"
+            },
+            {
+              "name": "Sloane Square",
+              "income": "1140"
+            },
+            {
+              "name": "South Kensington",
+              "income": "910"
+            },
+            {
+              "name": "Gloucester Road",
+              "income": "1540"
+            },
+            {
+              "name": "High Street Kensington",
+              "income": "1450"
+            },
+            {
+              "name": "Notting Hill Gate",
+              "income": "1230"
+            },
+            {
+              "name": "Bayswater",
+              "income": "920"
+            }
+          ]
+        }
+      ],
+      "name": "Circle",
+      "id": "circle"
+    },
+    {
+      "branches": [
+        {
+          "name": "Earl's Court to Ealing Broadway",
+          "stations": [
+            {
+              "name": "Earl's Court",
+              "income": "1180"
+            },
+            {
+              "name": "West Kensington",
+              "income": "1180"
+            },
+            {
+              "name": "Barons Court",
+              "income": "1180"
+            },
+            {
+              "name": "Hammersmith",
+              "income": "800"
+            },
+            {
+              "name": "Ravenscourt Park",
+              "income": "980"
+            },
+            {
+              "name": "Stamford Brook",
+              "income": "1310"
+            },
+            {
+              "name": "Turnham Green",
+              "income": "1310"
+            },
+            {
+              "name": "Chiswick Park",
+              "income": "1160"
+            },
+            {
+              "name": "Acton Town",
+              "income": "710"
+            },
+            {
+              "name": "Ealing Common",
+              "income": "1060"
+            },
+            {
+              "name": "Ealing Broadway",
+              "income": "1110"
+            }
+          ]
+        },
+        {
+          "name": "Earl's Court to Edgware Road",
+          "stations": [
+            {
+              "name": "Earl's Court",
+              "income": "1180"
+            },
+            {
+              "name": "High Street Kensington",
+              "income": "1450"
+            },
+            {
+              "name": "Notting Hill Gate",
+              "income": "1230"
+            },
+            {
+              "name": "Bayswater",
+              "income": "920"
+            },
+            {
+              "name": "Paddington",
+              "income": "1070"
+            },
+            {
+              "name": "Edgware Road (Circle/District/Hammersmith and City)",
+              "income": "1080"
+            }
+          ]
+        },
+        {
+          "name": "Earl's Court to Upminster",
+          "stations": [
+            {
+              "name": "Earl's Court",
+              "income": "1180"
+            },
+            {
+              "name": "Gloucester Road",
+              "income": "1540"
+            },
+            {
+              "name": "South Kensington",
+              "income": "910"
+            },
+            {
+              "name": "Sloane Square",
+              "income": "1140"
+            },
+            {
+              "name": "Victoria",
+              "income": "820"
+            },
+            {
+              "name": "St. James's Park",
+              "income": "1020"
+            },
+            {
+              "name": "Westminster",
+              "income": "1020"
+            },
+            {
+              "name": "Embankment",
+              "income": "1020"
+            },
+            {
+              "name": "Temple",
+              "income": "1010"
+            },
+            {
+              "name": "Blackfriars",
+              "income": "1220"
+            },
+            {
+              "name": "Mansion House",
+              "income": "1220"
+            },
+            {
+              "name": "Cannon Street",
+              "income": "1220"
+            },
+            {
+              "name": "Monument",
+              "income": "1220"
+            },
+            {
+              "name": "Tower Hill",
+              "income": "1190"
+            },
+            {
+              "name": "Aldgate East",
+              "income": "580"
+            },
+            {
+              "name": "Whitechapel",
+              "income": "630"
+            },
+            {
+              "name": "Stepney Green",
+              "income": "550"
+            },
+            {
+              "name": "Mile End",
+              "income": "590"
+            },
+            {
+              "name": "Bow Road",
+              "income": "600"
+            },
+            {
+              "name": "Bromley-by-Bow",
+              "income": "530"
+            },
+            {
+              "name": "West Ham",
+              "income": "640"
+            },
+            {
+              "name": "Plaistow",
+              "income": "660"
+            },
+            {
+              "name": "Upton Park",
+              "income": "580"
+            },
+            {
+              "name": "East Ham",
+              "income": "600"
+            },
+            {
+              "name": "Barking",
+              "income": "620"
+            },
+            {
+              "name": "Upney",
+              "income": "740"
+            },
+            {
+              "name": "Becontree",
+              "income": "620"
+            },
+            {
+              "name": "Dagenham Heathway",
+              "income": "630"
+            },
+            {
+              "name": "Dagenham East",
+              "income": "680"
+            },
+            {
+              "name": "Elm Park",
+              "income": "700"
+            },
+            {
+              "name": "Hornchurch",
+              "income": "750"
+            },
+            {
+              "name": "Upminster Bridge",
+              "income": "760"
+            },
+            {
+              "name": "Upminster",
+              "income": "950"
+            }
+          ]
+        },
+        {
+          "name": "Earl's Court to Wimbledon",
+          "stations": [
+            {
+              "name": "Earl's Court",
+              "income": "1180"
+            },
+            {
+              "name": "West Brompton",
+              "income": "1090"
+            },
+            {
+              "name": "Fulham Broadway",
+              "income": "980"
+            },
+            {
+              "name": "Parsons Green",
+              "income": "1360"
+            },
+            {
+              "name": "Putney Bridge",
+              "income": "1280"
+            },
+            {
+              "name": "East Putney",
+              "income": "1090"
+            },
+            {
+              "name": "Southfields",
+              "income": "1270"
+            },
+            {
+              "name": "Wimbledon Park",
+              "income": "1370"
+            },
+            {
+              "name": "Wimbledon",
+              "income": "1220"
+            }
+          ]
+        },
+        {
+          "name": "Earl's Court to Richmond",
+          "stations": [
+            {
+              "name": "Earl's Court",
+              "income": "1180"
+            },
+            {
+              "name": "West Kensington",
+              "income": "1180"
+            },
+            {
+              "name": "Barons Court",
+              "income": "1180"
+            },
+            {
+              "name": "Hammersmith",
+              "income": "800"
+            },
+            {
+              "name": "Ravenscourt Park",
+              "income": "980"
+            },
+            {
+              "name": "Stamford Brook",
+              "income": "1310"
+            },
+            {
+              "name": "Turnham Green",
+              "income": "1310"
+            },
+            {
+              "name": "Gunnersbury",
+              "income": "1120"
+            },
+            {
+              "name": "Kew Gardens",
+              "income": "1510"
+            },
+            {
+              "name": "Richmond",
+              "income": "1170"
+            }
+          ]
+        }
+      ],
+      "name": "District",
+      "id": "district"
+    },
+    {
+      "branches": [
+        {
+          "name": "Hammersmith to Barking",
+          "stations": [
+            {
+              "name": "Hammersmith",
+              "income": "800"
+            },
+            {
+              "name": "Goldhawk Road",
+              "income": "1110"
+            },
+            {
+              "name": "Shepherd's Bush Market",
+              "income": "840"
+            },
+            {
+              "name": "Wood Lane",
+              "income": "700"
+            },
+            {
+              "name": "Latimer Road",
+              "income": "630"
+            },
+            {
+              "name": "Ladbroke Grove",
+              "income": "930"
+            },
+            {
+              "name": "Westbourne Park",
+              "income": "600"
+            },
+            {
+              "name": "Royal Oak",
+              "income": "1060"
+            },
+            {
+              "name": "Paddington",
+              "income": "1070"
+            },
+            {
+              "name": "Edgware Road (Circle/District/Hammersmith and City)",
+              "income": "1080"
+            },
+            {
+              "name": "Baker Street",
+              "income": "1130"
+            },
+            {
+              "name": "Great Portland Street",
+              "income": "930"
+            },
+            {
+              "name": "Euston Square",
+              "income": "560"
+            },
+            {
+              "name": "Kings Cross St. Pancras",
+              "income": "650"
+            },
+            {
+              "name": "Farringdon",
+              "income": "860"
+            },
+            {
+              "name": "Barbican",
+              "income": "1220"
+            },
+            {
+              "name": "Moorgate",
+              "income": "1220"
+            },
+            {
+              "name": "Liverpool Street",
+              "income": "1220"
+            },
+            {
+              "name": "Aldgate East",
+              "income": "580"
+            },
+            {
+              "name": "Whitechapel",
+              "income": "630"
+            },
+            {
+              "name": "Stepney Green",
+              "income": "550"
+            },
+            {
+              "name": "Mile End",
+              "income": "590"
+            },
+            {
+              "name": "Bow Road",
+              "income": "600"
+            },
+            {
+              "name": "Bromley-by-Bow",
+              "income": "530"
+            },
+            {
+              "name": "West Ham",
+              "income": "640"
+            },
+            {
+              "name": "Plaistow",
+              "income": "660"
+            },
+            {
+              "name": "Upton Park",
+              "income": "580"
+            },
+            {
+              "name": "East Ham",
+              "income": "600"
+            },
+            {
+              "name": "Barking",
+              "income": "620"
+            }
+          ]
+        }
+      ],
+      "name": "Hammersmith & City",
+      "id": "hammersmith"
+    },
+    {
+      "branches": [
+        {
+          "name": "Stanmore to Stratford",
+          "stations": [
+            {
+              "name": "Stanmore",
+              "income": "830"
+            },
+            {
+              "name": "Canons Park",
+              "income": "830"
+            },
+            {
+              "name": "Queensbury",
+              "income": "770"
+            },
+            {
+              "name": "Kingsbury",
+              "income": "750"
+            },
+            {
+              "name": "Wembley Park",
+              "income": "770"
+            },
+            {
+              "name": "Neasden",
+              "income": "710"
+            },
+            {
+              "name": "Dollis Hill",
+              "income": "670"
+            },
+            {
+              "name": "Willesden Green",
+              "income": "790"
+            },
+            {
+              "name": "Kilburn",
+              "income": "850"
+            },
+            {
+              "name": "West Hampstead",
+              "income": "1140"
+            },
+            {
+              "name": "Finchley Road",
+              "income": "1140"
+            },
+            {
+              "name": "Swiss Cottage",
+              "income": "940"
+            },
+            {
+              "name": "St. John's Wood",
+              "income": "1020"
+            },
+            {
+              "name": "Baker Street",
+              "income": "1130"
+            },
+            {
+              "name": "Bond Street",
+              "income": "930"
+            },
+            {
+              "name": "Green Park",
+              "income": "1010"
+            },
+            {
+              "name": "Westminster",
+              "income": "1020"
+            },
+            {
+              "name": "Waterloo",
+              "income": "820"
+            },
+            {
+              "name": "Southwark",
+              "income": "690"
+            },
+            {
+              "name": "London Bridge",
+              "income": "700"
+            },
+            {
+              "name": "Bermondsey",
+              "income": "640"
+            },
+            {
+              "name": "Canada Water",
+              "income": "670"
+            },
+            {
+              "name": "Canary Wharf",
+              "income": "880"
+            },
+            {
+              "name": "North Greenwich",
+              "income": "860"
+            },
+            {
+              "name": "Canning Town",
+              "income": "560"
+            },
+            {
+              "name": "West Ham",
+              "income": "640"
+            },
+            {
+              "name": "Stratford",
+              "income": "620"
+            }
+          ]
+        }
+      ],
+      "name": "Jubilee",
+      "id": "jubilee"
+    },
+    {
+      "branches": [
+        {
+          "name": "Aldgate to Uxbridge",
+          "stations": [
+            {
+              "name": "Aldgate",
+              "income": "1220"
+            },
+            {
+              "name": "Liverpool Street",
+              "income": "1220"
+            },
+            {
+              "name": "Moorgate",
+              "income": "1220"
+            },
+            {
+              "name": "Barbican",
+              "income": "1220"
+            },
+            {
+              "name": "Farringdon",
+              "income": "860"
+            },
+            {
+              "name": "Kings Cross St. Pancras",
+              "income": "650"
+            },
+            {
+              "name": "Euston Square",
+              "income": "560"
+            },
+            {
+              "name": "Great Portland Street",
+              "income": "930"
+            },
+            {
+              "name": "Baker Street",
+              "income": "1130"
+            },
+            {
+              "name": "Finchley Road",
+              "income": "1140"
+            },
+            {
+              "name": "Wembley Park",
+              "income": "770"
+            },
+            {
+              "name": "Preston Road",
+              "income": "810"
+            },
+            {
+              "name": "Northwick Park",
+              "income": "940"
+            },
+            {
+              "name": "Harrow-on-the-Hill",
+              "income": "840"
+            },
+            {
+              "name": "West Harrow",
+              "income": "910"
+            },
+            {
+              "name": "Rayners Lane",
+              "income": "960"
+            },
+            {
+              "name": "Eastcote",
+              "income": "920"
+            },
+            {
+              "name": "Ruislip Manor",
+              "income": "1010"
+            },
+            {
+              "name": "Ruislip",
+              "income": "1010"
+            },
+            {
+              "name": "Ickenham",
+              "income": "1010"
+            },
+            {
+              "name": "Hillingdon",
+              "income": "1080"
+            },
+            {
+              "name": "Uxbridge",
+              "income": "790"
+            }
+          ]
+        },
+        {
+          "name": "Aldgate to Amersham",
+          "stations": [
+            {
+              "name": "Aldgate",
+              "income": "1220"
+            },
+            {
+              "name": "Liverpool Street",
+              "income": "1220"
+            },
+            {
+              "name": "Moorgate",
+              "income": "1220"
+            },
+            {
+              "name": "Barbican",
+              "income": "1220"
+            },
+            {
+              "name": "Farringdon",
+              "income": "860"
+            },
+            {
+              "name": "Kings Cross St. Pancras",
+              "income": "650"
+            },
+            {
+              "name": "Euston Square",
+              "income": "560"
+            },
+            {
+              "name": "Great Portland Street",
+              "income": "930"
+            },
+            {
+              "name": "Baker Street",
+              "income": "1130"
+            },
+            {
+              "name": "Finchley Road",
+              "income": "1140"
+            },
+            {
+              "name": "Wembley Park",
+              "income": "770"
+            },
+            {
+              "name": "Preston Road",
+              "income": "810"
+            },
+            {
+              "name": "Northwick Park",
+              "income": "940"
+            },
+            {
+              "name": "Harrow-on-the-Hill",
+              "income": "840"
+            },
+            {
+              "name": "North Harrow",
+              "income": "970"
+            },
+            {
+              "name": "Pinner",
+              "income": "1200"
+            },
+            {
+              "name": "Northwood Hills",
+              "income": "840"
+            },
+            {
+              "name": "Northwood",
+              "income": "840"
+            },
+            {
+              "name": "Moor Park",
+              "income": "1590"
+            },
+            {
+              "name": "Rickmansworth",
+              "income": "1110"
+            },
+            {
+              "name": "Chorleywood",
+              "income": "1240"
+            },
+            {
+              "name": "Chalfont and Latimer",
+              "income": "1120"
+            },
+            {
+              "name": "Amersham",
+              "income": "1070"
+            }
+          ]
+        },
+        {
+          "name": "Aldgate to Chesham",
+          "stations": [
+            {
+              "name": "Aldgate",
+              "income": "1220"
+            },
+            {
+              "name": "Liverpool Street",
+              "income": "1220"
+            },
+            {
+              "name": "Moorgate",
+              "income": "1220"
+            },
+            {
+              "name": "Barbican",
+              "income": "1220"
+            },
+            {
+              "name": "Farringdon",
+              "income": "860"
+            },
+            {
+              "name": "Kings Cross St. Pancras",
+              "income": "650"
+            },
+            {
+              "name": "Euston Square",
+              "income": "560"
+            },
+            {
+              "name": "Great Portland Street",
+              "income": "930"
+            },
+            {
+              "name": "Baker Street",
+              "income": "1130"
+            },
+            {
+              "name": "Finchley Road",
+              "income": "1140"
+            },
+            {
+              "name": "Wembley Park",
+              "income": "770"
+            },
+            {
+              "name": "Preston Road",
+              "income": "810"
+            },
+            {
+              "name": "Northwick Park",
+              "income": "940"
+            },
+            {
+              "name": "Harrow-on-the-Hill",
+              "income": "840"
+            },
+            {
+              "name": "North Harrow",
+              "income": "970"
+            },
+            {
+              "name": "Pinner",
+              "income": "1200"
+            },
+            {
+              "name": "Northwood Hills",
+              "income": "840"
+            },
+            {
+              "name": "Northwood",
+              "income": "840"
+            },
+            {
+              "name": "Moor Park",
+              "income": "1590"
+            },
+            {
+              "name": "Rickmansworth",
+              "income": "1110"
+            },
+            {
+              "name": "Chorleywood",
+              "income": "1240"
+            },
+            {
+              "name": "Chalfont and Latimer",
+              "income": "1120"
+            },
+            {
+              "name": "Chesham",
+              "income": "760"
+            }
+          ]
+        },
+        {
+          "name": "Aldgate to Watford",
+          "stations": [
+            {
+              "name": "Aldgate",
+              "income": "1220"
+            },
+            {
+              "name": "Liverpool Street",
+              "income": "1220"
+            },
+            {
+              "name": "Moorgate",
+              "income": "1220"
+            },
+            {
+              "name": "Barbican",
+              "income": "1220"
+            },
+            {
+              "name": "Farringdon",
+              "income": "860"
+            },
+            {
+              "name": "Kings Cross St. Pancras",
+              "income": "650"
+            },
+            {
+              "name": "Euston Square",
+              "income": "560"
+            },
+            {
+              "name": "Great Portland Street",
+              "income": "930"
+            },
+            {
+              "name": "Baker Street",
+              "income": "1130"
+            },
+            {
+              "name": "Finchley Road",
+              "income": "1140"
+            },
+            {
+              "name": "Wembley Park",
+              "income": "770"
+            },
+            {
+              "name": "Preston Road",
+              "income": "810"
+            },
+            {
+              "name": "Northwick Park",
+              "income": "940"
+            },
+            {
+              "name": "Harrow-on-the-Hill",
+              "income": "840"
+            },
+            {
+              "name": "North Harrow",
+              "income": "970"
+            },
+            {
+              "name": "Pinner",
+              "income": "1200"
+            },
+            {
+              "name": "Northwood Hills",
+              "income": "840"
+            },
+            {
+              "name": "Northwood",
+              "income": "840"
+            },
+            {
+              "name": "Moor Park",
+              "income": "1590"
+            },
+            {
+              "name": "Croxley",
+              "income": "940"
+            },
+            {
+              "name": "Watford",
+              "income": "1040"
+            }
+          ]
+        }
+      ],
+      "name": "Metropolitan",
+      "id": "metropolitan"
+    },
+    {
+      "branches": [
+        {
+          "name": "Morden to High Barnet (via Bank)",
+          "stations": [
+            {
+              "name": "Morden",
+              "income": "740"
+            },
+            {
+              "name": "South Wimbledon",
+              "income": "1130"
+            },
+            {
+              "name": "Colliers Wood",
+              "income": "950"
+            },
+            {
+              "name": "Tooting Broadway",
+              "income": "870"
+            },
+            {
+              "name": "Tooting Bec",
+              "income": "1040"
+            },
+            {
+              "name": "Balham",
+              "income": "1200"
+            },
+            {
+              "name": "Clapham South",
+              "income": "1200"
+            },
+            {
+              "name": "Clapham Common",
+              "income": "1030"
+            },
+            {
+              "name": "Clapham North",
+              "income": "1040"
+            },
+            {
+              "name": "Stockwell",
+              "income": "850"
+            },
+            {
+              "name": "Oval",
+              "income": "840"
+            },
+            {
+              "name": "Kennington",
+              "income": "710"
+            },
+            {
+              "name": "Elephant and Castle",
+              "income": "690"
+            },
+            {
+              "name": "Borough",
+              "income": "1220"
+            },
+            {
+              "name": "London Bridge",
+              "income": "700"
+            },
+            {
+              "name": "Bank",
+              "income": "1220"
+            },
+            {
+              "name": "Moorgate",
+              "income": "1220"
+            },
+            {
+              "name": "Old Street",
+              "income": "1220"
+            },
+            {
+              "name": "Angel",
+              "income": "1050"
+            },
+            {
+              "name": "Kings Cross St. Pancras",
+              "income": "650"
+            },
+            {
+              "name": "Euston",
+              "income": "560"
+            },
+            {
+              "name": "Camden Town",
+              "income": "840"
+            },
+            {
+              "name": "Kentish Town",
+              "income": "1030"
+            },
+            {
+              "name": "Tufnell Park",
+              "income": "1010"
+            },
+            {
+              "name": "Archway",
+              "income": "740"
+            },
+            {
+              "name": "Highgate",
+              "income": "1180"
+            },
+            {
+              "name": "East Finchley",
+              "income": "950"
+            },
+            {
+              "name": "Finchley Central",
+              "income": "970"
+            },
+            {
+              "name": "West Finchley",
+              "income": "1160"
+            },
+            {
+              "name": "Woodside Park",
+              "income": "880"
+            },
+            {
+              "name": "Totteridge and Whetstone",
+              "income": "960"
+            },
+            {
+              "name": "High Barnet",
+              "income": "1030"
+            }
+          ]
+        },
+        {
+          "name": "Morden to High Barnet (via Charing Cross)",
+          "stations": [
+            {
+              "name": "Morden",
+              "income": "740"
+            },
+            {
+              "name": "South Wimbledon",
+              "income": "1130"
+            },
+            {
+              "name": "Colliers Wood",
+              "income": "950"
+            },
+            {
+              "name": "Tooting Broadway",
+              "income": "870"
+            },
+            {
+              "name": "Tooting Bec",
+              "income": "1040"
+            },
+            {
+              "name": "Balham",
+              "income": "1200"
+            },
+            {
+              "name": "Clapham South",
+              "income": "1200"
+            },
+            {
+              "name": "Clapham Common",
+              "income": "1030"
+            },
+            {
+              "name": "Clapham North",
+              "income": "1040"
+            },
+            {
+              "name": "Stockwell",
+              "income": "850"
+            },
+            {
+              "name": "Oval",
+              "income": "840"
+            },
+            {
+              "name": "Kennington",
+              "income": "710"
+            },
+            {
+              "name": "Waterloo",
+              "income": "820"
+            },
+            {
+              "name": "Embankment",
+              "income": "1020"
+            },
+            {
+              "name": "Charing Cross",
+              "income": "1010"
+            },
+            {
+              "name": "Leicester Square",
+              "income": "1010"
+            },
+            {
+              "name": "Tottenham Court Road",
+              "income": "930"
+            },
+            {
+              "name": "Goodge Street",
+              "income": "710"
+            },
+            {
+              "name": "Warren Street",
+              "income": "710"
+            },
+            {
+              "name": "Euston",
+              "income": "560"
+            },
+            {
+              "name": "Mornington Crescent",
+              "income": "840"
+            },
+            {
+              "name": "Camden Town",
+              "income": "840"
+            },
+            {
+              "name": "Kentish Town",
+              "income": "1030"
+            },
+            {
+              "name": "Tufnell Park",
+              "income": "1010"
+            },
+            {
+              "name": "Archway",
+              "income": "740"
+            },
+            {
+              "name": "Highgate",
+              "income": "1180"
+            },
+            {
+              "name": "East Finchley",
+              "income": "950"
+            },
+            {
+              "name": "Finchley Central",
+              "income": "970"
+            },
+            {
+              "name": "West Finchley",
+              "income": "1160"
+            },
+            {
+              "name": "Woodside Park",
+              "income": "880"
+            },
+            {
+              "name": "Totteridge and Whetstone",
+              "income": "960"
+            },
+            {
+              "name": "High Barnet",
+              "income": "1030"
+            }
+          ]
+        },
+        {
+          "name": "Morden to Edgware (via Bank)",
+          "stations": [
+            {
+              "name": "Morden",
+              "income": "740"
+            },
+            {
+              "name": "South Wimbledon",
+              "income": "1130"
+            },
+            {
+              "name": "Colliers Wood",
+              "income": "950"
+            },
+            {
+              "name": "Tooting Broadway",
+              "income": "870"
+            },
+            {
+              "name": "Tooting Bec",
+              "income": "1040"
+            },
+            {
+              "name": "Balham",
+              "income": "1200"
+            },
+            {
+              "name": "Clapham South",
+              "income": "1200"
+            },
+            {
+              "name": "Clapham Common",
+              "income": "1030"
+            },
+            {
+              "name": "Clapham North",
+              "income": "1040"
+            },
+            {
+              "name": "Stockwell",
+              "income": "850"
+            },
+            {
+              "name": "Oval",
+              "income": "840"
+            },
+            {
+              "name": "Kennington",
+              "income": "710"
+            },
+            {
+              "name": "Elephant and Castle",
+              "income": "690"
+            },
+            {
+              "name": "Borough",
+              "income": "1220"
+            },
+            {
+              "name": "London Bridge",
+              "income": "700"
+            },
+            {
+              "name": "Bank",
+              "income": "1220"
+            },
+            {
+              "name": "Moorgate",
+              "income": "1220"
+            },
+            {
+              "name": "Old Street",
+              "income": "1220"
+            },
+            {
+              "name": "Angel",
+              "income": "1050"
+            },
+            {
+              "name": "Kings Cross St. Pancras",
+              "income": "650"
+            },
+            {
+              "name": "Euston",
+              "income": "560"
+            },
+            {
+              "name": "Camden Town",
+              "income": "840"
+            },
+            {
+              "name": "Chalk Farm",
+              "income": "740"
+            },
+            {
+              "name": "Belsize Park",
+              "income": "1240"
+            },
+            {
+              "name": "Hampstead",
+              "income": "1440"
+            },
+            {
+              "name": "Golders Green",
+              "income": "1110"
+            },
+            {
+              "name": "Brent Cross",
+              "income": "920"
+            },
+            {
+              "name": "Hendon Central",
+              "income": "780"
+            },
+            {
+              "name": "Colindale",
+              "income": "730"
+            },
+            {
+              "name": "Burnt Oak",
+              "income": "670"
+            },
+            {
+              "name": "Edgware",
+              "income": "790"
+            }
+          ]
+        },
+        {
+          "name": "Morden to Edgware (via Charing Cross)",
+          "stations": [
+            {
+              "name": "Morden",
+              "income": "740"
+            },
+            {
+              "name": "South Wimbledon",
+              "income": "1130"
+            },
+            {
+              "name": "Colliers Wood",
+              "income": "950"
+            },
+            {
+              "name": "Tooting Broadway",
+              "income": "870"
+            },
+            {
+              "name": "Tooting Bec",
+              "income": "1040"
+            },
+            {
+              "name": "Balham",
+              "income": "1200"
+            },
+            {
+              "name": "Clapham South",
+              "income": "1200"
+            },
+            {
+              "name": "Clapham Common",
+              "income": "1030"
+            },
+            {
+              "name": "Clapham North",
+              "income": "1040"
+            },
+            {
+              "name": "Stockwell",
+              "income": "850"
+            },
+            {
+              "name": "Oval",
+              "income": "840"
+            },
+            {
+              "name": "Kennington",
+              "income": "710"
+            },
+            {
+              "name": "Waterloo",
+              "income": "820"
+            },
+            {
+              "name": "Embankment",
+              "income": "1020"
+            },
+            {
+              "name": "Charing Cross",
+              "income": "1010"
+            },
+            {
+              "name": "Leicester Square",
+              "income": "1010"
+            },
+            {
+              "name": "Tottenham Court Road",
+              "income": "930"
+            },
+            {
+              "name": "Goodge Street",
+              "income": "710"
+            },
+            {
+              "name": "Warren Street",
+              "income": "710"
+            },
+            {
+              "name": "Euston",
+              "income": "560"
+            },
+            {
+              "name": "Mornington Crescent",
+              "income": "840"
+            },
+            {
+              "name": "Camden Town",
+              "income": "840"
+            },
+            {
+              "name": "Chalk Farm",
+              "income": "740"
+            },
+            {
+              "name": "Belsize Park",
+              "income": "1240"
+            },
+            {
+              "name": "Hampstead",
+              "income": "1440"
+            },
+            {
+              "name": "Golders Green",
+              "income": "1110"
+            },
+            {
+              "name": "Brent Cross",
+              "income": "920"
+            },
+            {
+              "name": "Hendon Central",
+              "income": "780"
+            },
+            {
+              "name": "Colindale",
+              "income": "730"
+            },
+            {
+              "name": "Burnt Oak",
+              "income": "670"
+            },
+            {
+              "name": "Edgware",
+              "income": "790"
+            }
+          ]
+        }
+      ],
+      "name": "Northern",
+      "id": "northern"
+    },
+    {
+      "branches": [
+        {
+          "name": "Cockfosters to Heathrow",
+          "stations": [
+            {
+              "name": "Cockfosters",
+              "income": "870"
+            },
+            {
+              "name": "Oakwood",
+              "income": "760"
+            },
+            {
+              "name": "Southgate",
+              "income": "870"
+            },
+            {
+              "name": "Arnos Grove",
+              "income": "770"
+            },
+            {
+              "name": "Bounds Green",
+              "income": "780"
+            },
+            {
+              "name": "Wood Green",
+              "income": "770"
+            },
+            {
+              "name": "Turnpike Lane",
+              "income": "730"
+            },
+            {
+              "name": "Manor House",
+              "income": "530"
+            },
+            {
+              "name": "Finsbury Park",
+              "income": "980"
+            },
+            {
+              "name": "Arsenal",
+              "income": "980"
+            },
+            {
+              "name": "Holloway Road",
+              "income": "730"
+            },
+            {
+              "name": "Caledonian Road",
+              "income": "610"
+            },
+            {
+              "name": "Kings Cross St. Pancras",
+              "income": "650"
+            },
+            {
+              "name": "Russell Square",
+              "income": "1220"
+            },
+            {
+              "name": "Holborn",
+              "income": "840"
+            },
+            {
+              "name": "Covent Garden",
+              "income": "1010"
+            },
+            {
+              "name": "Leicester Square",
+              "income": "1010"
+            },
+            {
+              "name": "Piccadilly Circus",
+              "income": "1010"
+            },
+            {
+              "name": "Green Park",
+              "income": "1010"
+            },
+            {
+              "name": "Hyde Park Corner",
+              "income": "1670"
+            },
+            {
+              "name": "Knightsbridge",
+              "income": "1690"
+            },
+            {
+              "name": "South Kensington",
+              "income": "910"
+            },
+            {
+              "name": "Gloucester Road",
+              "income": "1540"
+            },
+            {
+              "name": "Earl's Court",
+              "income": "1180"
+            },
+            {
+              "name": "Barons Court",
+              "income": "1180"
+            },
+            {
+              "name": "Hammersmith",
+              "income": "800"
+            },
+            {
+              "name": "Turnham Green",
+              "income": "1310"
+            },
+            {
+              "name": "Acton Town",
+              "income": "710"
+            },
+            {
+              "name": "South Ealing",
+              "income": "1210"
+            },
+            {
+              "name": "Northfields",
+              "income": "1210"
+            },
+            {
+              "name": "Boston Manor",
+              "income": "850"
+            },
+            {
+              "name": "Osterley",
+              "income": "940"
+            },
+            {
+              "name": "Hounslow East",
+              "income": "810"
+            },
+            {
+              "name": "Hounslow Central",
+              "income": "840"
+            },
+            {
+              "name": "Hounslow West",
+              "income": "690"
+            },
+            {
+              "name": "Hatton Cross",
+              "income": "750"
+            },
+            {
+              "name": "Heathrow Terminal 4",
+              "income": "750"
+            },
+            {
+              "name": "Heathrow Terminals 1 2 3",
+              "income": "750"
+            },
+            {
+              "name": "Heathrow Terminal 5",
+              "income": "750"
+            }
+          ]
+        },
+        {
+          "name": "Cockfosters to Uxbridge",
+          "stations": [
+            {
+              "name": "Cockfosters",
+              "income": "870"
+            },
+            {
+              "name": "Oakwood",
+              "income": "760"
+            },
+            {
+              "name": "Southgate",
+              "income": "870"
+            },
+            {
+              "name": "Arnos Grove",
+              "income": "770"
+            },
+            {
+              "name": "Bounds Green",
+              "income": "780"
+            },
+            {
+              "name": "Wood Green",
+              "income": "770"
+            },
+            {
+              "name": "Turnpike Lane",
+              "income": "730"
+            },
+            {
+              "name": "Manor House",
+              "income": "530"
+            },
+            {
+              "name": "Finsbury Park",
+              "income": "980"
+            },
+            {
+              "name": "Arsenal",
+              "income": "980"
+            },
+            {
+              "name": "Holloway Road",
+              "income": "730"
+            },
+            {
+              "name": "Caledonian Road",
+              "income": "610"
+            },
+            {
+              "name": "Kings Cross St. Pancras",
+              "income": "650"
+            },
+            {
+              "name": "Russell Square",
+              "income": "1220"
+            },
+            {
+              "name": "Holborn",
+              "income": "840"
+            },
+            {
+              "name": "Covent Garden",
+              "income": "1010"
+            },
+            {
+              "name": "Leicester Square",
+              "income": "1010"
+            },
+            {
+              "name": "Piccadilly Circus",
+              "income": "1010"
+            },
+            {
+              "name": "Green Park",
+              "income": "1010"
+            },
+            {
+              "name": "Hyde Park Corner",
+              "income": "1670"
+            },
+            {
+              "name": "Knightsbridge",
+              "income": "1690"
+            },
+            {
+              "name": "South Kensington",
+              "income": "910"
+            },
+            {
+              "name": "Gloucester Road",
+              "income": "1540"
+            },
+            {
+              "name": "Earl's Court",
+              "income": "1180"
+            },
+            {
+              "name": "Barons Court",
+              "income": "1180"
+            },
+            {
+              "name": "Hammersmith",
+              "income": "800"
+            },
+            {
+              "name": "Turnham Green",
+              "income": "1310"
+            },
+            {
+              "name": "Acton Town",
+              "income": "710"
+            },
+            {
+              "name": "Ealing Common",
+              "income": "1060"
+            },
+            {
+              "name": "North Ealing",
+              "income": "1110"
+            },
+            {
+              "name": "Park Royal",
+              "income": "970"
+            },
+            {
+              "name": "Alperton",
+              "income": "690"
+            },
+            {
+              "name": "Sudbury Town",
+              "income": "720"
+            },
+            {
+              "name": "Sudbury Hill",
+              "income": "1010"
+            },
+            {
+              "name": "South Harrow",
+              "income": "730"
+            },
+            {
+              "name": "Rayners Lane",
+              "income": "960"
+            },
+            {
+              "name": "Eastcote",
+              "income": "920"
+            },
+            {
+              "name": "Ruislip Manor",
+              "income": "1010"
+            },
+            {
+              "name": "Ruislip",
+              "income": "1010"
+            },
+            {
+              "name": "Ickenham",
+              "income": "1010"
+            },
+            {
+              "name": "Hillingdon",
+              "income": "1080"
+            },
+            {
+              "name": "Uxbridge",
+              "income": "790"
+            }
+          ]
+        }
+      ],
+      "name": "Piccadilly",
+      "id": "piccadilly"
+    },
+    {
+      "branches": [
+        {
+          "name": "Walthamstow Central to Brixton",
+          "stations": [
+            {
+              "name": "Walthamstow Central",
+              "income": "710"
+            },
+            {
+              "name": "Blackhorse Road",
+              "income": "740"
+            },
+            {
+              "name": "Tottenham Hale",
+              "income": "610"
+            },
+            {
+              "name": "Seven Sisters",
+              "income": "670"
+            },
+            {
+              "name": "Finsbury Park",
+              "income": "980"
+            },
+            {
+              "name": "Highbury and Islington",
+              "income": "1060"
+            },
+            {
+              "name": "Kings Cross St. Pancras",
+              "income": "650"
+            },
+            {
+              "name": "Euston",
+              "income": "560"
+            },
+            {
+              "name": "Warren Street",
+              "income": "710"
+            },
+            {
+              "name": "Oxford Circus",
+              "income": "930"
+            },
+            {
+              "name": "Green Park",
+              "income": "1010"
+            },
+            {
+              "name": "Victoria",
+              "income": "820"
+            },
+            {
+              "name": "Pimlico",
+              "income": "920"
+            },
+            {
+              "name": "Vauxhall",
+              "income": "880"
+            },
+            {
+              "name": "Stockwell",
+              "income": "850"
+            },
+            {
+              "name": "Brixton",
+              "income": "610"
+            }
+          ]
+        }
+      ],
+      "name": "Victoria",
+      "id": "victoria"
+    },
+    {
+      "branches": [
+        {
+          "name": "Waterloo to Bank",
+          "stations": [
+            {
+              "name": "Waterloo",
+              "income": "820"
+            },
+            {
+              "name": "Bank",
+              "income": "1220"
+            }
+          ]
+        }
+      ],
+      "name": "Waterloo & City",
+      "id": "waterloo"
+    }
+  ]
+}
+;
+</script>
+<script src="./static/js/main.js"></script>
+
+</body>
+</html>

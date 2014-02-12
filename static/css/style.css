@@ -1,0 +1,213 @@
+@font-face {
+  font-family: tube;
+  src: url('../font/london-tube-webfont.woff');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: local('Open Sans'), local('OpenSans'), url('../font/opensans.woff');
+}
+
+body {
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  color: #444;
+  margin: 0;
+}
+
+a {
+  color: #1c2bb7;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+h1, h2 {
+  font-family: tube;
+}
+
+p {
+  margin: 2em 0;
+}
+
+header, footer {
+  background-color: #262f7e;
+  color: white;
+  padding: 1.5em 0;
+}
+
+header {
+  margin-bottom: 2em;
+}
+
+footer {
+  margin-top: 2em;
+}
+
+footer a {
+  color: #cfd2f2;
+}
+
+header > h1, main, #footer-content {
+  width: 960px;
+  margin: 0 auto;
+}
+
+#text, #methodology {
+  width: 640px;
+}
+
+#visualization {
+  font-family: tube;
+}
+
+#lines .line {
+  display: inline-block;
+  width: 25%;
+  margin: 3px 0;
+  cursor: pointer;
+  vertical-align: top;
+  font-size: 0.9em;
+}
+
+#lines .line .line-colour {
+  display: inline-block;
+  vertical-align: 1px;
+  height: 9px;
+  width: 70px;
+  margin-right: 10px;
+}
+
+#lines .line .line-name {
+  display: inline-block;
+  color: #1c2bb7;
+}
+
+#lines .line .branches {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.4s, visibility 0.4s;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  font-size: 0.9em;
+}
+
+#lines .line.selected .branches {
+  opacity: 1;
+  visibility: visible;
+}
+
+#lines .branches .branch {
+  border: 1px solid white;
+  padding: 2px;
+  margin: 3px;
+  transition: background-color 0.4s, border-color 0.4s;
+}
+
+#lines .branches .branch:hover {
+  border-color: #828ad7;
+}
+
+#lines .branches .branch.selected {
+  background-color: #dbddf2;
+  border-color: #828ad7;
+}
+
+#lines .bakerloo.line .line-colour {
+  background-color: #b06010;
+}
+
+#lines .central.line .line-colour {
+  background-color: #ee3224;
+}
+
+#lines .circle.line .line-colour {
+  background-color: #ffd200;
+}
+
+#lines .district.line .line-colour {
+  background-color: #00853f;
+}
+
+#lines .hammersmith.line .line-colour {
+  background-color: #f386a1;
+}
+
+#lines .jubilee.line .line-colour {
+  background-color: #939ba1;
+}
+
+#lines .metropolitan.line .line-colour {
+  background-color: #97005e;
+}
+
+#lines .northern.line .line-colour {
+  background-color: #000000;
+}
+
+#lines .piccadilly.line .line-colour {
+  background-color: #1c3f94;
+}
+
+#lines .victoria.line .line-colour {
+  background-color: #009ddc;
+}
+
+#lines .waterloo.line .line-colour {
+  background-color: #86cebc;
+}
+
+#map {
+  display: block;
+}
+
+#map-content {
+  transition: opacity 2s;
+}
+
+.fade {
+  opacity: 0.1;
+}
+
+.graph path {
+  stroke: steelblue;
+  stroke-width: 10;
+  fill: none;
+}
+
+.graph line {
+  stroke: black;
+  stroke-width: 5;
+}
+
+.graph circle {
+  fill: white;
+  stroke: black;
+  stroke-width: 7;
+}
+
+.graph .x-label {
+  text-anchor: end;
+  font-size: 40px;
+}
+
+.graph .y-label {
+  text-anchor: end;
+  font-size: 40px;
+}
+
+#tooltip {
+  visibility: hidden;
+  position: absolute;
+  padding: 4px;
+  background-color: white;
+  border: 1px solid #ccc;
+  font-size: 0.9em;
+  transition: left 0.4s, top 0.4s;
+}
