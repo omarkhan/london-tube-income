@@ -64,6 +64,13 @@ header > h1, main, #footer-content {
   width: 640px;
 }
 
+#methodology img {
+  width: 32px;
+  height: 32px;
+  vertical-align: middle;
+  margin: 0 3px;
+}
+
 #visualization {
   font-family: tube;
 }

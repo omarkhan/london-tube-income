@@ -21,6 +21,10 @@ frameworks are used. Source code for the visualization and the data processing
 version][10] of the SVG tube map used above, and to [John Galantini][11] for
 the tube map font taken from his [CSS tube map][12] project.
 
+My name is Omar, I'm a programmer. Get in touch:
+[![linkedin](/static/img/webicon-linkedin.svg)][13]
+[![github](/static/img/webicon-github.svg)][14]
+
 [1]: http://www.doogal.co.uk/london_stations.php
 [2]: http://commons.wikimedia.org/wiki/London_Underground_geographic_maps/CSV
 [3]: http://www.neighbourhood.statistics.gov.uk/dissemination/Info.do?page=analysisandguidance/analysisarticles/income-small-area-model-based-estimates-200708.htm
@@ -33,3 +37,5 @@ the tube map font taken from his [CSS tube map][12] project.
 [10]: https://github.com/benbarnett/SVG-Tube-Map
 [11]: http://www.johngalantini.com/
 [12]: http://www.csstubemap.co.uk/
+[13]: http://www.linkedin.com/pub/omar-khan/28/797/530
+[14]: https://github.com/omarkhan
