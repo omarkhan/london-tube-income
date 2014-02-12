@@ -1,3 +1,5 @@
+## Household income by London Underground station
+
 [This feature in the New Yorker][1] shows median household income across the
 city's subway network. It shows some serious inequality: line 2 rises from the
 lowest depths of $13,750 at East 180 St. in the Bronx to the staggering heights
