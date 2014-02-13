@@ -173,13 +173,15 @@ the tube map font taken from his <a href="http://www.csstubemap.co.uk/">CSS tube
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1";
+  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&status=0";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
-<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
+<script src="./static/js/d3.min.js" charset="utf-8"></script>
+
 <script>
   window.DATA = {
   "lines": [
@@ -2805,7 +2807,9 @@ the tube map font taken from his <a href="http://www.csstubemap.co.uk/">CSS tube
 }
 ;
 </script>
-<script src="./static/js/main.js"></script>
+
+<script src="./static/js/main.min.js"></script>
+
 
 </body>
 </html>
