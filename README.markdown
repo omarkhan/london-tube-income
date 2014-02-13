@@ -19,6 +19,7 @@ used above, and to [John Galantini][9] for the tube map font taken from his
 First, run
 
     pip install -r requirements.txt
+    npm install -g coffee-script uglify-js
 
 This project uses [Cactus][11] to generate a static site from a bunch of django
 templates and other source files. Data processing scripts are in `bin/`,
