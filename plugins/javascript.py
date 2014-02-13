@@ -11,6 +11,7 @@ def preBuildPage(site, page, context, data):
 
 
 def postBuild(site):
+    cwd = os.getcwd()
     root = os.path.join(site.paths['build'], 'static/js/')
     os.chdir(root)
 
@@ -35,3 +36,5 @@ def postBuild(site):
             if os.path.exists(map_path):
                 command += ' --in-source-map %s' % map_path
             os.system(command)
+
+    os.chdir(cwd)
