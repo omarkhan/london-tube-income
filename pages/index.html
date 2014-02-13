@@ -44,7 +44,7 @@
 {% block scripts %}
 {% include "facebook.html" %}
 {% include "twitter.html" %}
-<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="{{ STATIC_URL }}/js/d3.v3.min.js" charset="utf-8"></script>
 <script>
   window.DATA = {% include "data.json" %};
 </script>
