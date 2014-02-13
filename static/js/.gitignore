@@ -1,1 +1,3 @@
 main.js
+*.min.js
+*.map
