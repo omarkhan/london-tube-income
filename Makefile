@@ -4,7 +4,7 @@ data:
 	./data.sh
 
 build:
-	cactus build
+	MINIFY=true cactus build
 
 serve:
 	cactus serve
