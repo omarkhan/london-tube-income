@@ -16,7 +16,9 @@ doesn't come close to the factor-of-10 gap you can find in NY and SF. I suspect
 part of it has to do with differences in the datasets &ndash; the figures I'm
 using here are model-based estimates of weekly household income.
 
-Select a line to get started:
+This should work in recent versions of Firefox or any webkit-based browser. It
+is *highly unlikely* to work in Internet Explorer. Select a line to get
+started:
 
 [1]: http://www.newyorker.com/sandbox/business/subway.html
 [2]: http://dangrover.com/
