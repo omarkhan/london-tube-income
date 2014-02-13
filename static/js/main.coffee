@@ -18,8 +18,8 @@ gety = (d) -> h - y(d.income)
 getElementCentre = (el) ->
   rect = el.getBoundingClientRect()
   return {
-    left: document.body.scrollLeft + rect.left + (rect.width / 2)
-    top: document.body.scrollTop + rect.top + (rect.height / 2)
+    left: window.pageXOffset + rect.left + (rect.width / 2)
+    top: window.pageYOffset + rect.top + (rect.height / 2)
   }
 
 # Line generator for income data
@@ -159,8 +159,8 @@ render = (lineId, stations) ->
         .attr('cx', getx)
         .attr('cy', gety)
 
-        # Display tooltip on mouseenter
-        .on 'mouseenter', (d) ->
+        # Display tooltip on mouseover
+        .on 'mouseover', (d) ->
           tooltip.select('.station-name').text(d.name)
           tooltip.select('.station-income-amount').text(d.income)
           rect = tooltip.node().getBoundingClientRect()
