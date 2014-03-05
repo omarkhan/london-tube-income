@@ -21,7 +21,7 @@ frameworks are used. Source code for the visualization and the data processing
 version][10] of the SVG tube map used above, and to [John Galantini][11] for
 the tube map font taken from his [CSS tube map][12] project.
 
-My name is Omar, I'm a programmer. Get in touch:
+My name is [Omar][15], I'm a programmer. Get in touch:
 [![linkedin](./static/img/webicon-linkedin.svg)][13]
 [![github](./static/img/webicon-github.svg)][14]
 
@@ -39,3 +39,4 @@ My name is Omar, I'm a programmer. Get in touch:
 [12]: http://www.csstubemap.co.uk/
 [13]: http://www.linkedin.com/pub/omar-khan/28/797/530
 [14]: https://github.com/omarkhan
+[15]: http://omarkhan.me/
