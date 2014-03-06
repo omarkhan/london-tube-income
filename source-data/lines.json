@@ -317,27 +317,27 @@
       "paths": [
         {
           "path": [
-            "88",
+            "72",
             "173",
-            "72"
+            "88"
           ],
-          "name": "Epping to Ealing Broadway (via Newbury Park)"
+          "name": "Ealing Broadway to Epping (via Newbury Park)"
         },
         {
           "path": [
-            "88",
+            "72",
             "241",
-            "72"
+            "88"
           ],
-          "name": "Epping to Ealing Broadway (via Woodford)"
+          "name": "Ealing Broadway to Epping (via Woodford)"
         },
         {
           "path": [
-            "88",
+            "294",
             "241",
-            "294"
+            "88"
           ],
-          "name": "Epping to West Ruislip (via Woodford)"
+          "name": "West Ruislip to Epping (via Woodford)"
         }
       ]
     },

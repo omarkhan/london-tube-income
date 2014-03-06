@@ -114,416 +114,183 @@
     {
       "branches": [
         {
-          "name": "Epping to Ealing Broadway (via Newbury Park)",
+          "name": "Ealing Broadway to Epping (via Newbury Park)",
           "stations": [
             {
-              "name": "Epping",
-              "income": "820"
+              "name": "Ealing Broadway",
+              "income": "1110"
             },
             {
-              "name": "Theydon Bois",
-              "income": "850"
+              "name": "West Acton",
+              "income": "910"
             },
             {
-              "name": "Debden",
-              "income": "570"
-            },
-            {
-              "name": "Loughton",
-              "income": "880"
-            },
-            {
-              "name": "Buckhurst Hill",
-              "income": "840"
-            },
-            {
-              "name": "Woodford",
-              "income": "970"
-            },
-            {
-              "name": "Roding Valley",
-              "income": "820"
-            },
-            {
-              "name": "Chigwell",
-              "income": "940"
-            },
-            {
-              "name": "Grange Hill",
+              "name": "North Acton",
               "income": "700"
             },
             {
-              "name": "Hainault",
+              "name": "East Acton",
+              "income": "700"
+            },
+            {
+              "name": "White City",
+              "income": "700"
+            },
+            {
+              "name": "Shepherd's Bush",
+              "income": "920"
+            },
+            {
+              "name": "Holland Park",
+              "income": "1350"
+            },
+            {
+              "name": "Notting Hill Gate",
+              "income": "1230"
+            },
+            {
+              "name": "Queensway",
+              "income": "920"
+            },
+            {
+              "name": "Lancaster Gate",
+              "income": "1070"
+            },
+            {
+              "name": "Marble Arch",
+              "income": "1080"
+            },
+            {
+              "name": "Bond Street",
+              "income": "930"
+            },
+            {
+              "name": "Oxford Circus",
+              "income": "930"
+            },
+            {
+              "name": "Tottenham Court Road",
+              "income": "930"
+            },
+            {
+              "name": "Holborn",
+              "income": "840"
+            },
+            {
+              "name": "Chancery Lane",
+              "income": "840"
+            },
+            {
+              "name": "St. Pauls",
+              "income": "1220"
+            },
+            {
+              "name": "Bank",
+              "income": "1220"
+            },
+            {
+              "name": "Liverpool Street",
+              "income": "1220"
+            },
+            {
+              "name": "Bethnal Green",
+              "income": "550"
+            },
+            {
+              "name": "Mile End",
+              "income": "590"
+            },
+            {
+              "name": "Stratford",
+              "income": "620"
+            },
+            {
+              "name": "Leyton",
               "income": "740"
             },
             {
-              "name": "Fairlop",
-              "income": "740"
-            },
-            {
-              "name": "Barkingside",
-              "income": "730"
-            },
-            {
-              "name": "Newbury Park",
-              "income": "730"
-            },
-            {
-              "name": "Gants Hill",
+              "name": "Leytonstone",
               "income": "760"
-            },
-            {
-              "name": "Redbridge",
-              "income": "850"
             },
             {
               "name": "Wanstead",
               "income": "980"
             },
             {
-              "name": "Leytonstone",
-              "income": "760"
-            },
-            {
-              "name": "Leyton",
-              "income": "740"
-            },
-            {
-              "name": "Stratford",
-              "income": "620"
-            },
-            {
-              "name": "Mile End",
-              "income": "590"
-            },
-            {
-              "name": "Bethnal Green",
-              "income": "550"
-            },
-            {
-              "name": "Liverpool Street",
-              "income": "1220"
-            },
-            {
-              "name": "Bank",
-              "income": "1220"
-            },
-            {
-              "name": "St. Pauls",
-              "income": "1220"
-            },
-            {
-              "name": "Chancery Lane",
-              "income": "840"
-            },
-            {
-              "name": "Holborn",
-              "income": "840"
-            },
-            {
-              "name": "Tottenham Court Road",
-              "income": "930"
-            },
-            {
-              "name": "Oxford Circus",
-              "income": "930"
-            },
-            {
-              "name": "Bond Street",
-              "income": "930"
-            },
-            {
-              "name": "Marble Arch",
-              "income": "1080"
-            },
-            {
-              "name": "Lancaster Gate",
-              "income": "1070"
-            },
-            {
-              "name": "Queensway",
-              "income": "920"
-            },
-            {
-              "name": "Notting Hill Gate",
-              "income": "1230"
-            },
-            {
-              "name": "Holland Park",
-              "income": "1350"
-            },
-            {
-              "name": "Shepherd's Bush",
-              "income": "920"
-            },
-            {
-              "name": "White City",
-              "income": "700"
-            },
-            {
-              "name": "East Acton",
-              "income": "700"
-            },
-            {
-              "name": "North Acton",
-              "income": "700"
-            },
-            {
-              "name": "West Acton",
-              "income": "910"
-            },
-            {
-              "name": "Ealing Broadway",
-              "income": "1110"
-            }
-          ]
-        },
-        {
-          "name": "Epping to Ealing Broadway (via Woodford)",
-          "stations": [
-            {
-              "name": "Epping",
-              "income": "820"
-            },
-            {
-              "name": "Theydon Bois",
+              "name": "Redbridge",
               "income": "850"
             },
             {
-              "name": "Debden",
-              "income": "570"
+              "name": "Gants Hill",
+              "income": "760"
             },
             {
-              "name": "Loughton",
-              "income": "880"
+              "name": "Newbury Park",
+              "income": "730"
             },
             {
-              "name": "Buckhurst Hill",
-              "income": "840"
+              "name": "Barkingside",
+              "income": "730"
+            },
+            {
+              "name": "Fairlop",
+              "income": "740"
+            },
+            {
+              "name": "Hainault",
+              "income": "740"
+            },
+            {
+              "name": "Grange Hill",
+              "income": "700"
+            },
+            {
+              "name": "Chigwell",
+              "income": "940"
+            },
+            {
+              "name": "Roding Valley",
+              "income": "820"
             },
             {
               "name": "Woodford",
               "income": "970"
             },
             {
-              "name": "South Woodford",
-              "income": "850"
-            },
-            {
-              "name": "Snaresbrook",
-              "income": "900"
-            },
-            {
-              "name": "Leytonstone",
-              "income": "760"
-            },
-            {
-              "name": "Leyton",
-              "income": "740"
-            },
-            {
-              "name": "Stratford",
-              "income": "620"
-            },
-            {
-              "name": "Mile End",
-              "income": "590"
-            },
-            {
-              "name": "Bethnal Green",
-              "income": "550"
-            },
-            {
-              "name": "Liverpool Street",
-              "income": "1220"
-            },
-            {
-              "name": "Bank",
-              "income": "1220"
-            },
-            {
-              "name": "St. Pauls",
-              "income": "1220"
-            },
-            {
-              "name": "Chancery Lane",
+              "name": "Buckhurst Hill",
               "income": "840"
-            },
-            {
-              "name": "Holborn",
-              "income": "840"
-            },
-            {
-              "name": "Tottenham Court Road",
-              "income": "930"
-            },
-            {
-              "name": "Oxford Circus",
-              "income": "930"
-            },
-            {
-              "name": "Bond Street",
-              "income": "930"
-            },
-            {
-              "name": "Marble Arch",
-              "income": "1080"
-            },
-            {
-              "name": "Lancaster Gate",
-              "income": "1070"
-            },
-            {
-              "name": "Queensway",
-              "income": "920"
-            },
-            {
-              "name": "Notting Hill Gate",
-              "income": "1230"
-            },
-            {
-              "name": "Holland Park",
-              "income": "1350"
-            },
-            {
-              "name": "Shepherd's Bush",
-              "income": "920"
-            },
-            {
-              "name": "White City",
-              "income": "700"
-            },
-            {
-              "name": "East Acton",
-              "income": "700"
-            },
-            {
-              "name": "North Acton",
-              "income": "700"
-            },
-            {
-              "name": "West Acton",
-              "income": "910"
-            },
-            {
-              "name": "Ealing Broadway",
-              "income": "1110"
-            }
-          ]
-        },
-        {
-          "name": "Epping to West Ruislip (via Woodford)",
-          "stations": [
-            {
-              "name": "Epping",
-              "income": "820"
-            },
-            {
-              "name": "Theydon Bois",
-              "income": "850"
-            },
-            {
-              "name": "Debden",
-              "income": "570"
             },
             {
               "name": "Loughton",
               "income": "880"
             },
             {
-              "name": "Buckhurst Hill",
-              "income": "840"
+              "name": "Debden",
+              "income": "570"
             },
             {
-              "name": "Woodford",
-              "income": "970"
-            },
-            {
-              "name": "South Woodford",
+              "name": "Theydon Bois",
               "income": "850"
             },
             {
-              "name": "Snaresbrook",
-              "income": "900"
+              "name": "Epping",
+              "income": "820"
+            }
+          ]
+        },
+        {
+          "name": "Ealing Broadway to Epping (via Woodford)",
+          "stations": [
+            {
+              "name": "Ealing Broadway",
+              "income": "1110"
             },
             {
-              "name": "Leytonstone",
-              "income": "760"
+              "name": "West Acton",
+              "income": "910"
             },
             {
-              "name": "Leyton",
-              "income": "740"
-            },
-            {
-              "name": "Stratford",
-              "income": "620"
-            },
-            {
-              "name": "Mile End",
-              "income": "590"
-            },
-            {
-              "name": "Bethnal Green",
-              "income": "550"
-            },
-            {
-              "name": "Liverpool Street",
-              "income": "1220"
-            },
-            {
-              "name": "Bank",
-              "income": "1220"
-            },
-            {
-              "name": "St. Pauls",
-              "income": "1220"
-            },
-            {
-              "name": "Chancery Lane",
-              "income": "840"
-            },
-            {
-              "name": "Holborn",
-              "income": "840"
-            },
-            {
-              "name": "Tottenham Court Road",
-              "income": "930"
-            },
-            {
-              "name": "Oxford Circus",
-              "income": "930"
-            },
-            {
-              "name": "Bond Street",
-              "income": "930"
-            },
-            {
-              "name": "Marble Arch",
-              "income": "1080"
-            },
-            {
-              "name": "Lancaster Gate",
-              "income": "1070"
-            },
-            {
-              "name": "Queensway",
-              "income": "920"
-            },
-            {
-              "name": "Notting Hill Gate",
-              "income": "1230"
-            },
-            {
-              "name": "Holland Park",
-              "income": "1350"
-            },
-            {
-              "name": "Shepherd's Bush",
-              "income": "920"
-            },
-            {
-              "name": "White City",
+              "name": "North Acton",
               "income": "700"
             },
             {
@@ -531,36 +298,269 @@
               "income": "700"
             },
             {
-              "name": "North Acton",
+              "name": "White City",
               "income": "700"
             },
             {
-              "name": "Hanger Lane",
-              "income": "970"
+              "name": "Shepherd's Bush",
+              "income": "920"
             },
             {
-              "name": "Perivale",
-              "income": "820"
+              "name": "Holland Park",
+              "income": "1350"
             },
             {
-              "name": "Greenford",
+              "name": "Notting Hill Gate",
+              "income": "1230"
+            },
+            {
+              "name": "Queensway",
+              "income": "920"
+            },
+            {
+              "name": "Lancaster Gate",
+              "income": "1070"
+            },
+            {
+              "name": "Marble Arch",
+              "income": "1080"
+            },
+            {
+              "name": "Bond Street",
+              "income": "930"
+            },
+            {
+              "name": "Oxford Circus",
+              "income": "930"
+            },
+            {
+              "name": "Tottenham Court Road",
+              "income": "930"
+            },
+            {
+              "name": "Holborn",
+              "income": "840"
+            },
+            {
+              "name": "Chancery Lane",
+              "income": "840"
+            },
+            {
+              "name": "St. Pauls",
+              "income": "1220"
+            },
+            {
+              "name": "Bank",
+              "income": "1220"
+            },
+            {
+              "name": "Liverpool Street",
+              "income": "1220"
+            },
+            {
+              "name": "Bethnal Green",
+              "income": "550"
+            },
+            {
+              "name": "Mile End",
+              "income": "590"
+            },
+            {
+              "name": "Stratford",
+              "income": "620"
+            },
+            {
+              "name": "Leyton",
               "income": "740"
             },
             {
-              "name": "Northolt",
-              "income": "810"
+              "name": "Leytonstone",
+              "income": "760"
             },
             {
-              "name": "South Ruislip",
-              "income": "800"
+              "name": "Snaresbrook",
+              "income": "900"
+            },
+            {
+              "name": "South Woodford",
+              "income": "850"
+            },
+            {
+              "name": "Woodford",
+              "income": "970"
+            },
+            {
+              "name": "Buckhurst Hill",
+              "income": "840"
+            },
+            {
+              "name": "Loughton",
+              "income": "880"
+            },
+            {
+              "name": "Debden",
+              "income": "570"
+            },
+            {
+              "name": "Theydon Bois",
+              "income": "850"
+            },
+            {
+              "name": "Epping",
+              "income": "820"
+            }
+          ]
+        },
+        {
+          "name": "West Ruislip to Epping (via Woodford)",
+          "stations": [
+            {
+              "name": "West Ruislip",
+              "income": "860"
             },
             {
               "name": "Ruislip Gardens",
               "income": "990"
             },
             {
-              "name": "West Ruislip",
-              "income": "860"
+              "name": "South Ruislip",
+              "income": "800"
+            },
+            {
+              "name": "Northolt",
+              "income": "810"
+            },
+            {
+              "name": "Greenford",
+              "income": "740"
+            },
+            {
+              "name": "Perivale",
+              "income": "820"
+            },
+            {
+              "name": "Hanger Lane",
+              "income": "970"
+            },
+            {
+              "name": "North Acton",
+              "income": "700"
+            },
+            {
+              "name": "East Acton",
+              "income": "700"
+            },
+            {
+              "name": "White City",
+              "income": "700"
+            },
+            {
+              "name": "Shepherd's Bush",
+              "income": "920"
+            },
+            {
+              "name": "Holland Park",
+              "income": "1350"
+            },
+            {
+              "name": "Notting Hill Gate",
+              "income": "1230"
+            },
+            {
+              "name": "Queensway",
+              "income": "920"
+            },
+            {
+              "name": "Lancaster Gate",
+              "income": "1070"
+            },
+            {
+              "name": "Marble Arch",
+              "income": "1080"
+            },
+            {
+              "name": "Bond Street",
+              "income": "930"
+            },
+            {
+              "name": "Oxford Circus",
+              "income": "930"
+            },
+            {
+              "name": "Tottenham Court Road",
+              "income": "930"
+            },
+            {
+              "name": "Holborn",
+              "income": "840"
+            },
+            {
+              "name": "Chancery Lane",
+              "income": "840"
+            },
+            {
+              "name": "St. Pauls",
+              "income": "1220"
+            },
+            {
+              "name": "Bank",
+              "income": "1220"
+            },
+            {
+              "name": "Liverpool Street",
+              "income": "1220"
+            },
+            {
+              "name": "Bethnal Green",
+              "income": "550"
+            },
+            {
+              "name": "Mile End",
+              "income": "590"
+            },
+            {
+              "name": "Stratford",
+              "income": "620"
+            },
+            {
+              "name": "Leyton",
+              "income": "740"
+            },
+            {
+              "name": "Leytonstone",
+              "income": "760"
+            },
+            {
+              "name": "Snaresbrook",
+              "income": "900"
+            },
+            {
+              "name": "South Woodford",
+              "income": "850"
+            },
+            {
+              "name": "Woodford",
+              "income": "970"
+            },
+            {
+              "name": "Buckhurst Hill",
+              "income": "840"
+            },
+            {
+              "name": "Loughton",
+              "income": "880"
+            },
+            {
+              "name": "Debden",
+              "income": "570"
+            },
+            {
+              "name": "Theydon Bois",
+              "income": "850"
+            },
+            {
+              "name": "Epping",
+              "income": "820"
             }
           ]
         }
